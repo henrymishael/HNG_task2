@@ -93,18 +93,11 @@ const Header = () => {
           isSidebarOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out`}
       >
-        <div className='w-[25%] bg-primary h-full'></div>
+        <div className='w-[25%] bg-primary/80 h-full'></div>
         <div className='w-[75%] flex flex-col pt-8 px-4'>
           <div className='flex items-center justify-between pb-2 border-b border-black/50'>
             <div className='flex space-x-4 items-center'>
-              <SearchIcon className='cursor-pointer' />
-              <UserCircle className='cursor-pointer' />
-              <div className='relative cursor-pointer'>
-                <ShoppingCartIcon />
-                <span className='absolute w-5 bg-red-500 bottom-3 left-3 text-[12px] flex items-center justify-center font-semibold font-titleFont text-white rounded-full'>
-                  {cart.length}
-                </span>
-              </div>
+              <Image src={logo} alt='Logo'></Image>
             </div>
             <button
               onClick={toggleSidebar}
