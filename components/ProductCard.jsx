@@ -5,9 +5,9 @@ import StarRating from "./star";
 
 import { ToastContainer, toast } from "react-toastify";
 import { useRecoilState } from "recoil";
-import { cartState } from "@/atoms/cartState";
+import { cartState } from "../atoms/cartState";
 import { useParams } from "next/navigation";
-import productList from "@/productList";
+import productList from "../productList";
 import { X } from "lucide-react";
 
 const ProductCard = ({ product }) => {

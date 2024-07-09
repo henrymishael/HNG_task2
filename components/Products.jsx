@@ -7,7 +7,7 @@ import Top from "./Top";
 import Activewear from "./Activewear";
 import Button from "./Button";
 import Outwear from "./Outwear";
-import productList from "@/productList";
+// import productList from "@/productList";
 import Footer from "./Footer";
 
 const Products = () => {

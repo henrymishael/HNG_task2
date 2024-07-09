@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import one from "@/public/images/productImages/first1.svg";
+import one from "../../public/images/productImages/first1.svg";
 
 const CartPage = ({ products }) => {
   return (

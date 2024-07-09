@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import hero from "@/public/images/banner/file.png";
-import hero2 from "@/public/images/banner/heroProduct.png";
-import mobile from "@/public/images/banner/mobile_hero.svg";
+import hero from "../public/images/banner/file.png";
+import hero2 from "../public/images/banner/heroProduct.png";
+import mobile from "../public/images/banner/mobile_hero.svg";
 import { Button } from "./ui/button";
 
 const Banner = ({ text, image }) => {

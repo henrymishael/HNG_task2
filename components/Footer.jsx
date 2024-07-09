@@ -1,12 +1,12 @@
 import Image from "next/image";
 import React from "react";
-import Logo from "@/public/images/logo/yindira(white).svg";
-import linkedin from "@/public/images/assets/linkedin.svg";
-import instagram from "@/public/images/assets/instagram.svg";
-import youtube from "@/public/images/assets/youtube.svg";
-import x from "@/public/images/assets/x.svg";
-import facebook from "@/public/images/assets/facebook.svg";
-import visa from "@/public/images/assets/visa.svg";
+import Logo from "../public/images/logo/yindira(white).svg";
+import linkedin from "../public/images/assets/linkedin.svg";
+import instagram from "../public/images/assets/instagram.svg";
+import youtube from "../public/images/assets/youtube.svg";
+import x from "../public/images/assets/x.svg";
+import facebook from "../public/images/assets/facebook.svg";
+import visa from "../public/images/assets/visa.svg";
 import { ArrowRight } from "lucide-react";
 
 const Footer = () => {

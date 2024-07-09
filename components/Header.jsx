@@ -1,15 +1,15 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import logo from "@/public/images/logo/yindira.svg";
-import cancel from "@/public/images/assets/cancel.svg";
-import cancelPop from "@/public/images/assets/cancelPop.svg";
-import one from "@/public/images/productImages/first1.svg";
+import logo from "../public/images/logo/yindira.svg";
+import cancel from "../public/images/assets/cancel.svg";
+import cancelPop from "../public/images/assets/cancelPop.svg";
+// import one from "@/public/images/productImages/first1.svg";
 import { SearchIcon, ShoppingCartIcon, UserCircle } from "lucide-react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Link from "next/link";
 import { RecoilRoot, useRecoilState } from "recoil";
-import { cartState } from "@/atoms/cartState";
+import { cartState } from "../atoms/cartState";
 
 const Header = () => {
   const [cartItem, setCartItem] = useRecoilState(cartState);

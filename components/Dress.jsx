@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import ProductCard from "@/components/ProductCard";
-import productList from "@/productList";
+import ProductCard from "./ProductCard";
+import productList from "../productList";
 
 const Dress = () => {
   const [itemsToShow, setItemsToShow] = useState(16);

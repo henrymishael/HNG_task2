@@ -1,8 +1,8 @@
 "use client";
 import { Poppins } from "next/font/google";
-import Header from "@/components/Header";
+import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Banner from "@/components/Banner";
+// import Banner from "@/components/Banner";
 
 import "./globals.css";
 import { RecoilRoot } from "recoil";
