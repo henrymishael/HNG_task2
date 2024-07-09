@@ -16,8 +16,15 @@ import { removeFromCart } from "@/store/slices/cart-slice";
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isCartPopupOpen, setCartPopupOpen] = useState(false);
-  const dispatch = useDispatch();
+  const [totalCart, setTotalCart] = useState(0);
   const { cart } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    let price = Math.ceil(cart.reduce((acc, curr) => acc + curr.price, 0));
+    setTotalCart(price);
+    // setTotalCart(cart.reduce((acc, curr) => acc + curr.price, 0));
+  }, [cart]);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -128,9 +135,9 @@ const Header = () => {
         </div>
       </aside>
       <aside
-        className={`fixed flex flex-col top-[72px] min-h-[100vh] right-0 px-6 pt-4  xl:w-[409px] bg-[#FCFCFC] z-50 transform overflow-y-scroll ${
+        className={`fixed flex flex-col top-[72px] h-screen  right-0 px-6 pt-4 pb-24  xl:w-[409px] bg-[#FCFCFC] z-50 transform overflow-y-scroll ${
           isCartPopupOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out j`}
+        } transition-transform duration-300 ease-in-out`}
       >
         <div className='flex items-center justify-between p-4'>
           <h2 className='uppercase text-xl font-medium'>My Shopping Cart</h2>
@@ -148,9 +155,9 @@ const Header = () => {
             </div>
             <div className='flex flex-col justify-center items-start gap-6'>
               <div>
-                <p className='text-[16px] font-bold '>Lilly</p>
-                <p className='text-sm text-[#686868]'>Mini gown</p>
-                <p className='text-lg font-medium'>₦50,000</p>
+                <p className='text-[16px] font-bold '>{product.name}</p>
+                <p className='text-sm text-[#686868]'>{product.type}</p>
+                <p className='text-lg font-medium'>₦{product.price}</p>
               </div>
               <div className='flex flex-col items-left gap-4'>
                 <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
@@ -173,7 +180,7 @@ const Header = () => {
         <div className=' bg-white px-5 pb-2.5 mt-[15px] w-full space-y-6'>
           <div className='flex justify-between items-center'>
             <h2>Sub - Total</h2>
-            <p>₦117,000</p>
+            <p>{totalCart}</p>
           </div>
           <div className='space-y-3'>
             <Link href={"/Cart"}>

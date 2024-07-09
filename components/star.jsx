@@ -23,7 +23,7 @@ function StarRating({ noOfStars }) {
         index += 1;
         return (
           <FaStar
-            className='text-[12px] md:text-[18px]'
+            className='text-[10px] md:text-[14px]'
             key={index}
             onClick={() => handleClick(index)}
             onMouseMove={() => handleMouseEnter(index)}

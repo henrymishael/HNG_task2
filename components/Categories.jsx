@@ -8,7 +8,7 @@ const Categories = ({ view, setView }) => {
   return (
     <div className='flex py-6  md:py-16 xsm:justify-center xl:justify-between '>
       <div>
-        <nav className='lg:flex flex-row xsm:space-x-2.5 md:space-x-12 xl:space-x-8 lg:text-xl xsm:text-sm hidden   '>
+        <nav className='lg:flex flex-row xsm:space-x-2.5 md:space-x-12 xl:space-x-8 lg:text-lg xsm:text-sm hidden   '>
           <p
             className={`${
               view == "Dresses" ? "text-primary " : "text-[#3232328b]"
@@ -54,7 +54,7 @@ const Categories = ({ view, setView }) => {
       </div>
       <div className='lg:hidden flex justify-between w-full'>
         <h2 className='text-lg font-bold text-primary'>{view}</h2>
-        <div className='flex'>
+        <div className='flex items-center'>
           <p>Filters</p> <ChevronDown />
         </div>
       </div>
