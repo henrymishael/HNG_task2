@@ -62,7 +62,7 @@ const Header = () => {
           <div className='relative' onClick={toggleCartPopup}>
             <ShoppingCartIcon size={20} />
             <span className='absolute w-4 bg-red-500 bottom-3 left-3 text-[10px] flex items-center justify-center font-semibold font-titleFont text-white rounded-full'>
-              0
+              4
             </span>
           </div>
         </div>
