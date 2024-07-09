@@ -4,7 +4,10 @@ import React, { useEffect, useState } from "react";
 import logo from "../public/images/logo/yindira.svg";
 import cancel from "../public/images/assets/cancel.svg";
 import cancelPop from "../public/images/assets/cancelPop.svg";
-// import one from "@/public/images/productImages/first1.svg";
+import one from "@/public/images/productImages/second1.svg";
+import two from "@/public/images/productImages/cart.svg";
+import three from "@/public/images/productImages/shoe.svg";
+import four from "@/public/images/productImages/four.svg";
 import { SearchIcon, ShoppingCartIcon, UserCircle } from "lucide-react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Link from "next/link";
@@ -69,13 +72,13 @@ const Header = () => {
 
           <div className='relative cursor-pointer' onClick={toggleCartPopup}>
             <ShoppingCartIcon />
-            {cart.length >= 1 ? (
-              <span className='absolute w-4 bg-red-500 bottom-3 left-3 text-[12px] flex items-center justify-center font-semibold font-titleFont text-white rounded-full'>
-                {cart.length}
-              </span>
-            ) : (
+            {/* {cart.length >= 1 ? ( */}
+            <span className='absolute w-4 bg-red-500 bottom-3 left-3 text-[12px] flex items-center justify-center font-semibold font-titleFont text-white rounded-full'>
+              4
+            </span>
+            {/* ) : (
               []
-            )}
+            )} */}
           </div>
         </div>
       </header>
@@ -135,9 +138,9 @@ const Header = () => {
         </div>
       </aside>
       <aside
-        className={`fixed flex flex-col top-[72px] h-screen  right-0 px-6 pt-4 pb-24  xl:w-[409px] bg-[#FCFCFC] z-50 transform overflow-y-scroll ${
+        className={`fixed flex flex-col top-[72px] h-screen gap-8  right-0 px-6 pt-4 pb-24  xl:w-[420px] bg-[#FCFCFC] z-50 transform overflow-y-scroll ${
           isCartPopupOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out`}
+        } transition-transform duration-300 ease-in-out `}
       >
         <div className='flex items-center justify-between p-4'>
           <h2 className='uppercase text-xl font-medium'>My Shopping Cart</h2>
@@ -145,42 +148,124 @@ const Header = () => {
             <Image src={cancelPop} alt='Close icon' />
           </button>
         </div>
-        {cart.map((product) => (
-          <div
-            key={product.id}
-            className='p-5 bg-white flex flex-row w-full items-center gap-[22px]'
-          >
-            <div className='w-[150px] h-[200px]'>
-              <Image src={product?.image1} alt='' />
+        {/* {cart.map((product) => ( */}
+        <div
+          // key={product.id}
+          className='p-5 rounded-lg dow bg-white flex flex-row w-full items-center gap-[22px]'
+        >
+          <div className='w-[150px] h-[200px]'>
+            <Image src={one} alt='' />
+          </div>
+          <div className='flex flex-col justify-center items-start gap-6'>
+            <div>
+              <p className='text-[16px] font-bold '>Lilly</p>
+              <p className='text-sm text-[#686868]'>Mini gown</p>
+              <p className='text-lg font-medium'>₦50,000</p>
             </div>
-            <div className='flex flex-col justify-center items-start gap-6'>
-              <div>
-                <p className='text-[16px] font-bold '>{product.name}</p>
-                <p className='text-sm text-[#686868]'>{product.type}</p>
-                <p className='text-lg font-medium'>₦{product.price}</p>
+            <div className='flex flex-col items-left gap-4'>
+              <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
+                <p>-</p>
+                <p className='font-medium'>1</p>
+                <p>+</p>
               </div>
-              <div className='flex flex-col items-left gap-4'>
-                <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                  <p>-</p>
-                  <p className='font-medium'>1</p>
-                  <p>+</p>
-                </div>
-                <button
-                  onClick={() => handleRemoveFromCart()}
-                  className='uppercase 
+              <button
+                onClick={() => handleRemoveFromCart()}
+                className='uppercase 
             text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-sm transition-all duration-200 ease-in-out'
-                >
-                  Remove from cart
-                </button>
-              </div>
+              >
+                Remove from cart
+              </button>
             </div>
           </div>
-        ))}
+        </div>
+        <div
+          // key={product.id}
+          className='p-5 rounded-lg dow bg-white flex flex-row w-full items-center gap-[22px]'
+        >
+          <div className='w-[150px] h-[200px]'>
+            <Image src={two} alt='' />
+          </div>
+          <div className='flex flex-col justify-center items-start gap-6'>
+            <div>
+              <p className='text-[16px] font-bold '>Sculpter</p>
+              <p className='text-sm text-[#686868]'>Silk shaper</p>
+              <p className='text-lg font-medium'>₦22,000</p>
+            </div>
+            <div className='flex flex-col items-left gap-4'>
+              <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
+                <p>-</p>
+                <p className='font-medium'>1</p>
+                <p>+</p>
+              </div>
+              <button
+                onClick={() => handleRemoveFromCart()}
+                className='uppercase 
+            text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-sm transition-all duration-200 ease-in-out'
+              >
+                Remove from cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className='p-5 rounded-lg dow bg-white flex flex-row w-full items-center gap-[22px]'>
+          <div className='w-[150px] h-[200px]'>
+            <Image src={three} alt='' />
+          </div>
+          <div className='flex flex-col justify-center items-start gap-6'>
+            <div>
+              <p className='text-[16px] font-bold '>Candy</p>
+              <p className='text-sm text-[#686868]'>Signature pose</p>
+              <p className='text-lg font-medium'>₦20,000</p>
+            </div>
+            <div className='flex flex-col items-left gap-4'>
+              <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
+                <p>-</p>
+                <p className='font-medium'>1</p>
+                <p>+</p>
+              </div>
+              <button
+                onClick={() => handleRemoveFromCart()}
+                className='uppercase 
+            text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-sm transition-all duration-200 ease-in-out'
+              >
+                Remove from cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className='p-5 rounded-lg dow bg-white flex flex-row w-full items-center gap-[22px]'>
+          <div className='w-[150px] h-[200px]'>
+            <Image src={four} alt='' />
+          </div>
+          <div className='flex flex-col justify-center items-start gap-6'>
+            <div>
+              <p className='text-[16px] font-bold '>Crochetelo</p>
+              <p className='text-sm text-[#686868]'>Knitted Price</p>
+              <p className='text-lg font-medium'>₦95,000</p>
+            </div>
+            <div className='flex flex-col items-left gap-4'>
+              <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
+                <p>-</p>
+                <p className='font-medium'>1</p>
+                <p>+</p>
+              </div>
+              <button
+                onClick={() => handleRemoveFromCart()}
+                className='uppercase 
+            text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-sm transition-all duration-200 ease-in-out'
+              >
+                Remove from cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* ))} */}
 
         <div className=' bg-white px-5 pb-2.5 mt-[15px] w-full space-y-6'>
           <div className='flex justify-between items-center'>
             <h2>Sub - Total</h2>
-            <p>{totalCart}</p>
+            <p>₦50,000</p>
           </div>
           <div className='space-y-3'>
             <Link href={"/Cart"}>

@@ -1,6 +1,6 @@
 import { ChevronDown, SearchIcon } from "lucide-react";
 import Image from "next/image";
-import cancelPop from "../public/images/assets/cancelPop.svg";
+import cancelPop from "../public/images/assets/cancelPop2.svg";
 import React, { useState } from "react";
 
 const Search = () => {
@@ -34,28 +34,26 @@ const Search = () => {
       </button>
 
       {isOverlayVisible && (
-        <div className='absolute inset-0  flex  z-50'>
+        <div className='absolute inset-0  flex  z-50 overscroll-none'>
           <div
-            className={`absolute items-left flex flex-col scrollbar-none  h-[280px] top-32  right-0 px-6 pt-4 pb-24  w-[243px] bg-[#FCFCFC] z-50 transform overflow-y-scroll ${
+            className={`absolute items-left flex flex-col scrollbar-none  h-[380px] top-32  right-0  pt-4 pb-24  w-[243px] bg-[#FCFCFC] z-50 transform overflow-y-scroll ${
               isOverlayVisible ? "translate-x-0" : "translate-x-full"
             } transition-transform duration-300 ease-in-out`}
           >
-            <button className='absolute top-4 right-4' onClick={closeOverlay}>
-              {/* <img src='path-to-close-icon' alt='Close' />{" "} */}
-              <Image src={cancelPop} alt='Close icon' />
-              {/* Replace with your close icon */}
-            </button>
-            <div className='w-full text-xl h-[38px] text-primary mb-4 bg-[#f1f0f0]'>
-              SHOP BY
-              <button
-                className='text-lg uppercase text-black hover:underline'
-                onClick={closeOverlay}
-              ></button>
+            <div className='w-full text-xl h-[38px] text-primary mb-4 bg-[#f1f0f0] px-3 flex items-center  py-2'>
+              <p>SHOP BY</p>
+              <button className='absolute  right-4' onClick={closeOverlay}>
+                {/* <img src='path-to-close-icon' alt='Close' />{" "} */}
+                <Image src={cancelPop} alt='Close icon' />
+                {/* Replace with your close icon */}
+              </button>
             </div>
 
-            <ul className='flex flex-col gap-[22px]'>
+            <ul className='flex flex-col gap-[22px] px-5'>
               {categories.map((category, index) => (
-                <li key={index} className='mb-2 '></li>
+                <li key={index} className='mb-2 uppercase font-medium '>
+                  {category}
+                </li>
               ))}
             </ul>
           </div>

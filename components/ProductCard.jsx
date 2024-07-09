@@ -60,7 +60,7 @@ const ProductCard = ({ product }) => {
         </div>
 
         <button
-          className={`uppercase text-[8px] xl:text-[16px] md:px-5 md:py-2.5 p-2.5 gap-2.5 bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-sm transition-all duration-200 ease-in-out`}
+          className={`uppercase text-[8px] xl:text-[16px] w-[170px] px-5 py-2.5 bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-sm transition-all duration-200 ease-in-out`}
           onClick={
             cart.some((item) => item.id === product.id)
               ? handleRemoveFromCart
