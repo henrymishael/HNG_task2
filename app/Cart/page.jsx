@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import one from "../../public/images/productImages/first1.svg";
 
-const CartPage = ({ products }) => {
+const CartPage = () => {
   return (
     <div className='bg-[#f1f0f0] px-8 py-10 '>
       <h2 className='text-[32px] font-semibold'>My Cart</h2>
