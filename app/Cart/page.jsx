@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import one from "../../public/images/productImages/first1.svg";
 import { useDispatch, useSelector } from "react-redux";
 
-const CartPage = ({ product }) => {
+const CartPage = () => {
   const [totalCart, setTotalCart] = useState(0);
   const { cart } = useSelector((state) => state);
   const dispatch = useDispatch();
