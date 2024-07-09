@@ -3,59 +3,26 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import StarRating from "./star";
 
-import { ToastContainer, toast } from "react-toastify";
-import { useRecoilState } from "recoil";
-import { cartState } from "../atoms/cartState";
-import { useParams } from "next/navigation";
 import productList from "../productList";
 import { X } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart } from "@/store/slices/cart-slice";
 
 const ProductCard = ({ product }) => {
-  const [cartItem, setCartItem] = useRecoilState(cartState);
+  // const [cartItem, setCartItem] = useRecoilState(cartState);
   const [buttonText, setButtonText] = useState("Add to Cart");
 
-  product = productList.products.find((x) => x.slug === product.slug);
+  const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state);
 
-  useEffect(() => {
-    const savedCartItems = localStorage.getItem("cartItem");
-    if (savedCartItems) {
-      setCartItem(JSON.parse(savedCartItems));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("cartItem", JSON.stringify(cartItem));
-  }, [cartItem]);
-
-  useEffect(() => {
-    const isInCart = cartItem.find((pro) => pro.id === product.id);
-    if (isInCart) {
-      setButtonText("Added!");
-    } else {
-      setButtonText("Add to Cart");
-    }
-  }, [cartItem, product.id]);
-
-  if (!product) {
-    return <p>Product not found</p>;
+  function handleAddToCart() {
+    dispatch(addToCart(product));
   }
 
-  const addItemToCart = () => {
-    if (cartItem.findIndex((pro) => pro.id === product.id) === -1) {
-      setCartItem((prevState) => [...prevState, { ...product, quantity: 1 }]);
-      toast(`${product.name} has been added to cart`);
-      setButtonText("Added!");
-    } else {
-      setCartItem((prevState) => {
-        return prevState.map((item) => {
-          return item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item;
-        });
-      });
-      toast(`Increased quantity of ${product.name}`);
-    }
-  };
+  function handleRemoveFromCart() {
+    console.log("removed");
+    dispatch(removeFromCart(product.id));
+  }
 
   return (
     <div className='max-w-[320px] flex flex-col gap-1  md:gap-2'>
@@ -94,9 +61,15 @@ const ProductCard = ({ product }) => {
 
         <button
           className='uppercase text-[8px] xl:text-[16px] md:px-5 md:py-2.5 p-2.5 gap-2.5 bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-sm transition-all duration-200 ease-in-out'
-          onClick={addItemToCart}
+          onClick={
+            cart.some((item) => item.id === product.id)
+              ? handleRemoveFromCart
+              : handleAddToCart
+          }
         >
-          {buttonText}
+          {cart.some((item) => item.id === product.id)
+            ? "Remove "
+            : "Add to Cart"}
         </button>
       </div>
       {/* <ToastContainer

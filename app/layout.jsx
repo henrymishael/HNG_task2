@@ -3,6 +3,8 @@ import { Poppins } from "next/font/google";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 // import Banner from "@/components/Banner";
+import { Provider } from "react-redux";
+import store from "../store/store";
 
 import "./globals.css";
 import { RecoilRoot } from "recoil";
@@ -20,7 +22,7 @@ const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <RecoilRoot>
+    <Provider store={store}>
       <html lang='en'>
         <body
           className={`${poppins.className} max-w-[1400px] flex flex-col justify-center `}
@@ -31,6 +33,6 @@ export default function RootLayout({ children }) {
           <Footer />
         </body>
       </html>
-    </RecoilRoot>
+    </Provider>
   );
 }

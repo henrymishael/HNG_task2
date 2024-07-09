@@ -10,64 +10,14 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import Link from "next/link";
 import { RecoilRoot, useRecoilState } from "recoil";
 import { cartState } from "../atoms/cartState";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart } from "@/store/slices/cart-slice";
 
 const Header = () => {
-  const [cartItem, setCartItem] = useRecoilState(cartState);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isCartPopupOpen, setCartPopupOpen] = useState(false);
-
-  useEffect(() => {
-    // Load cart items from local storage when the component mounts
-    const savedCartItems = localStorage.getItem("cartItem");
-    if (savedCartItems) {
-      setCartItem(JSON.parse(savedCartItems));
-    }
-  }, []);
-
-  useEffect(() => {
-    // Save cart items to local storage whenever they change
-    localStorage.setItem("cartItem", JSON.stringify(cartItem));
-  }, [cartItem]);
-
-  // const addItemToCart = (productItem) => {
-  //   if (cartItem.findIndex((pro) => pro.id === productItem.id) === -1) {
-  //     setCartItem((prevState) => [...prevState, productItem]);
-  //     alert(`${product.name} has been added to cart`);
-  //   } else {
-  //     setCartItem((prevState) => {
-  //       return prevState.map((item) => {
-  //         return item.id === productItem.id
-  //           ? { ...item, quantity: item.quantity + 1 }
-  //           : item;
-  //       });
-  //     });
-  //   }
-  // };
-
-  const removeItemFromCart = (productItem) => {
-    const productExist = cartItem.find((item) => item.id === productItem.id);
-    if (productExist.quantity === 1) {
-      setCartItem(cartItem.filter((item) => item.id !== productItem.id));
-      alert(`${productItem.name} has been removed from cart`);
-    } else {
-      setCartItem(
-        cartItem.map((item) =>
-          item.id === productItem.id
-            ? { ...productExist, quantity: productExist.quantity - 1 }
-            : item
-        )
-      );
-    }
-  };
-
-  const totalPrice = cartItem.reduce(
-    (price, item) => price + item.quantity * item.price,
-    0
-  );
-
-  const handleCartClearance = () => {
-    setCartItem([]);
-  };
+  const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -75,6 +25,11 @@ const Header = () => {
   const toggleCartPopup = () => {
     setCartPopupOpen(!isCartPopupOpen);
   };
+
+  function handleRemoveFromCart() {
+    console.log("removed");
+    dispatch(removeFromCart(cart?.id));
+  }
 
   return (
     <>
@@ -84,9 +39,11 @@ const Header = () => {
         <div className='slg:hidden slg:p-3 xsm:p-2 rounded-full hover:bg-accent'>
           <RxHamburgerMenu size={28} onClick={toggleSidebar} />
         </div>
-        <div>
-          <Image src={logo} alt='Logo'></Image>
-        </div>
+        <Link href='/'>
+          <div>
+            <Image src={logo} alt='Logo'></Image>
+          </div>
+        </Link>
 
         <div className='flex slg:hidden space-x-4 xsm:space-x-3 slg:pl-0 md:pl-0'>
           <SearchIcon size={20} className='' />
@@ -102,11 +59,16 @@ const Header = () => {
         <div className='slg:flex hidden space-x-4 slg:pl-0 md:pl-0'>
           <SearchIcon className='cursor-pointer' />
           <UserCircle className='cursor-pointer' />
+
           <div className='relative cursor-pointer' onClick={toggleCartPopup}>
             <ShoppingCartIcon />
-            <span className='absolute w-4 bg-red-500 bottom-3 left-3 text-[12px] flex items-center justify-center font-semibold font-titleFont text-white rounded-full'>
-              {cartItem.length}
-            </span>
+            {cart.length >= 1 ? (
+              <span className='absolute w-4 bg-red-500 bottom-3 left-3 text-[12px] flex items-center justify-center font-semibold font-titleFont text-white rounded-full'>
+                {cart.length}
+              </span>
+            ) : (
+              []
+            )}
           </div>
         </div>
       </header>
@@ -121,7 +83,7 @@ const Header = () => {
           isSidebarOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out`}
       >
-        <div className='w-[25%] bg-accent h-full'></div>
+        <div className='w-[25%] bg-primary h-full'></div>
         <div className='w-[75%] flex flex-col pt-8 px-4'>
           <div className='flex items-center justify-between pb-2 border-b border-black/50'>
             <div className='flex space-x-4 items-center'>
@@ -130,7 +92,7 @@ const Header = () => {
               <div className='relative cursor-pointer'>
                 <ShoppingCartIcon />
                 <span className='absolute w-5 bg-red-500 bottom-3 left-3 text-[12px] flex items-center justify-center font-semibold font-titleFont text-white rounded-full'>
-                  {cartItem.length}
+                  {cart.length}
                 </span>
               </div>
             </div>
@@ -166,7 +128,7 @@ const Header = () => {
         </div>
       </aside>
       <aside
-        className={`fixed flex flex-col top-[72px] h-full right-0 px-6 pt-4  xl:w-[409px] bg-[#FCFCFC] z-50 transform ${
+        className={`fixed flex flex-col top-[72px] min-h-[100vh] right-0 px-6 pt-4  xl:w-[409px] bg-[#FCFCFC] z-50 transform overflow-y-scroll ${
           isCartPopupOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out j`}
       >
@@ -176,7 +138,7 @@ const Header = () => {
             <Image src={cancelPop} alt='Close icon' />
           </button>
         </div>
-        {cartItem.map((product) => (
+        {cart.map((product) => (
           <div
             key={product.id}
             className='p-5 bg-white flex flex-row w-full items-center gap-[22px]'
@@ -197,6 +159,7 @@ const Header = () => {
                   <p>+</p>
                 </div>
                 <button
+                  onClick={() => handleRemoveFromCart()}
                   className='uppercase 
             text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-sm transition-all duration-200 ease-in-out'
                 >
