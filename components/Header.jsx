@@ -15,6 +15,7 @@ import { RecoilRoot, useRecoilState } from "recoil";
 import { cartState } from "../atoms/cartState";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart } from "@/store/slices/cart-slice";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -22,6 +23,23 @@ const Header = () => {
   const [totalCart, setTotalCart] = useState(0);
   const { cart } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(1);
+  const router = useRouter();
+
+  const handleViewCart = (e) => {
+    e.preventDefault();
+    window.location.href = "/Cart";
+  };
+
+  const incrementQuantity = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
 
   useEffect(() => {
     let price = Math.ceil(cart.reduce((acc, curr) => acc + curr.price, 0));
@@ -157,9 +175,13 @@ const Header = () => {
             </div>
             <div className='flex flex-col items-left gap-4'>
               <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                <p>-</p>
-                <p className='font-medium'>1</p>
-                <p>+</p>
+                <p className='cursor-pointer' onClick={decrementQuantity}>
+                  -
+                </p>
+                <p className='font-medium'>{quantity}</p>
+                <p className='cursor-pointer' onClick={incrementQuantity}>
+                  +
+                </p>
               </div>
               <button
                 onClick={() => handleRemoveFromCart()}
@@ -261,7 +283,7 @@ const Header = () => {
             <p>₦50,000</p>
           </div>
           <div className='space-y-3'>
-            <Link href={"/Cart"}>
+            <Link onClick={handleViewCart} href={"/Cart"}>
               <button className='w-full flex items-center justify-center self-stretch px-5 py-2.5 bg-primary/30 text-white text-[12px]'>
                 View Cart
               </button>
