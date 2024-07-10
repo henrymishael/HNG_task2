@@ -71,3 +71,7 @@ footer p {
 .dow {
   box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.08);
 }
+
+.card:hover {
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.08);
+}

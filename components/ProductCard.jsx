@@ -36,7 +36,7 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <div className='max-w-[320px] flex flex-col gap-1  md:gap-2'>
+    <div className='card max-w-[320px] flex flex-col gap-1  md:gap-2'>
       <div className='relative group'>
         <Image
           className='group-hover:opacity-0 transition-opacity duration-500'
@@ -49,7 +49,7 @@ const ProductCard = ({ product }) => {
           alt={product.name}
         />
       </div>
-      <div className='flex justify-between pt-2'>
+      <div className='flex justify-between pt-2 px-2'>
         <div className='space-y-1 md:space-y-2'>
           <p className='font-bold text-[12px] md:text-[16px] leading-[10px]'>
             {product.name}
@@ -63,8 +63,8 @@ const ProductCard = ({ product }) => {
           <StarRating noOfStars={product.ratings} />
         </div>
       </div>
-      <div className='flex items-center justify-between py-2'>
-        <div className='xl:rounded-sm rounded-[3px] md:px-1.5 md:gap-4 gap-2.5  text-[12px]  flex flex-row items-center bg-white xl:py-4  md:p-2 xsm:px-[8px]  lg:px-2.5 h-6 '>
+      <div className='flex items-center justify-between p-2'>
+        <div className='xl:rounded-sm rounded-[3px] md:px-1.5 md:gap-4 gap-2.5  text-[12px]  flex flex-row items-center bg-[#f3f3f3] xl:py-4  md:p-2 xsm:px-[8px]  lg:px-2.5 h-6 '>
           <p className='cursor-pointer' onClick={decrementQuantity}>
             -
           </p>
@@ -75,7 +75,7 @@ const ProductCard = ({ product }) => {
         </div>
 
         <button
-          className={`uppercase text-[8px] xl:text-[16px] w-[100px] md:w-[170px] md:px-5 py-2.5 bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-sm transition-all duration-200 ease-in-out`}
+          className={`uppercase text-[8px] xl:text-[14px] w-[100px] md:w-[130px] md:px-3 py-2.5 bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out`}
           onClick={
             cart.some((item) => item.id === product.id)
               ? handleRemoveFromCart

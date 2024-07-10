@@ -73,13 +73,16 @@ const Header = () => {
           </div>
         </Link>
 
-        <div className='flex slg:hidden space-x-4 xsm:space-x-3 slg:pl-0 md:pl-0'>
+        <div className='flex slg:hidden   lg:space-x-4 xsm:space-x-3 slg:pl-0 md:pl-0'>
           <SearchIcon size={20} className='' />
           <UserCircle size={20} />
           <Link href={"/"}></Link>
-          <div className='relative' onClick={toggleCartPopup}>
+          <div
+            className='relative bg-white -left-2.5'
+            onClick={toggleCartPopup}
+          >
             <ShoppingCartIcon size={20} />
-            <span className='absolute w-4 bg-red-500 bottom-3 left-3 text-[10px] flex items-center justify-center font-semibold font-titleFont text-white rounded-full'>
+            <span className='absolute w-3.5 bg-red-500 bottom-3 left-3 text-[10px] flex items-center justify-center font-semibold font-titleFont text-white rounded-full'>
               4
             </span>
           </div>
@@ -149,11 +152,11 @@ const Header = () => {
         </div>
       </aside>
       <aside
-        className={`fixed flex flex-col top-[72px] h-screen gap-8  right-0 px-6 pt-4 pb-24  xl:w-[420px] bg-[#FCFCFC] z-50 transform overflow-y-scroll ${
+        className={`fixed flex flex-col top-[72px] h-screen gap-8  right-0 px-6 pt-4 pb-24  xl:w-[420px] bg-[#FCFCFC] z-50 transform overflow-y-scroll scrollbar-none ${
           isCartPopupOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out `}
       >
-        <div className='flex items-center justify-between p-4'>
+        <div className='flex items-center justify-between p-4 '>
           <h2 className='uppercase text-xl font-medium'>My Shopping Cart</h2>
           <button onClick={toggleCartPopup} className=''>
             <Image src={cancelPop} alt='Close icon' />
@@ -186,7 +189,7 @@ const Header = () => {
               <button
                 onClick={() => handleRemoveFromCart()}
                 className='uppercase 
-            text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-sm transition-all duration-200 ease-in-out'
+            text-[10px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
               >
                 Remove from cart
               </button>
@@ -215,7 +218,7 @@ const Header = () => {
               <button
                 onClick={() => handleRemoveFromCart()}
                 className='uppercase 
-            text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-sm transition-all duration-200 ease-in-out'
+            text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
               >
                 Remove from cart
               </button>
@@ -241,7 +244,7 @@ const Header = () => {
               <button
                 onClick={() => handleRemoveFromCart()}
                 className='uppercase 
-            text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-sm transition-all duration-200 ease-in-out'
+            text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
               >
                 Remove from cart
               </button>
@@ -267,7 +270,7 @@ const Header = () => {
               <button
                 onClick={() => handleRemoveFromCart()}
                 className='uppercase 
-            text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-sm transition-all duration-200 ease-in-out'
+            text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
               >
                 Remove from cart
               </button>
@@ -278,13 +281,13 @@ const Header = () => {
         {/* ))} */}
 
         <div className=' bg-white px-5 pb-2.5 mt-[15px] w-full space-y-6'>
-          <div className='flex justify-between items-center'>
+          <div className='flex justify-between items-center font-semibold'>
             <h2>Sub - Total</h2>
             <p>₦50,000</p>
           </div>
           <div className='space-y-3'>
             <Link onClick={handleViewCart} href={"/Cart"}>
-              <button className='w-full flex items-center justify-center self-stretch px-5 py-2.5 bg-primary/30 text-white text-[12px]'>
+              <button className='w-full flex items-center justify-center self-stretch px-5 py-2.5 bg-primary/30 text-white text-[12px] hover:bg-primary/60'>
                 View Cart
               </button>
             </Link>

@@ -21,7 +21,7 @@ const config = {
     },
     extend: {
       colors: {
-        background: "#F1F0F0",
+        background: "#FFFFFF",
         header: "#ffffff",
         primary: "#012850",
         accent: "#FF92A5CC",

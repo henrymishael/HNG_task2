@@ -31,8 +31,12 @@ const Banner = ({ text, image }) => {
           Shop Now
         </button>
       </div>
-      <Image className='absolute -top-20    xl:hidden ' src={mobile} alt='' />
-      <Image className='pt-40 xsm:hidden xl:block' src={hero} alt='' />
+      <Image
+        className='absolute -Z:20 -top-20 md:pl-12 w-fit     slg:hidden '
+        src={mobile}
+        alt=''
+      />
+      <Image className='pt-40 xsm:hidden slg:block -Z-20 ' src={hero} alt='' />
     </div>
   );
 };

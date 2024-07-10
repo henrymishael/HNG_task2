@@ -67,7 +67,10 @@ const Categories = ({ view, setView }) => {
       </div>
       <div className='lg:hidden flex justify-between w-full'>
         <h2 className='text-lg font-bold text-primary'>{view}</h2>
-        <div onClick={toggleOverlay} className='flex items-center relative'>
+        <div
+          onClick={toggleOverlay}
+          className='cursor-pointer flex items-center relative'
+        >
           <p>Filters</p> <ChevronDown />
           {isOverlayVisible && (
             <div className='absolute inset-0  flex  z-50 overscroll-none'>
