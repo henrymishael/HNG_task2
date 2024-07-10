@@ -30,6 +30,10 @@ const Header = () => {
     e.preventDefault();
     window.location.href = "/Cart";
   };
+  const handleViewCheckout = (e) => {
+    e.preventDefault();
+    window.location.href = "/Checkout";
+  };
 
   const incrementQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -285,15 +289,18 @@ const Header = () => {
             <h2>Sub - Total</h2>
             <p>₦50,000</p>
           </div>
-          <div className='space-y-3'>
+          <div className='space-y-6'>
             <Link onClick={handleViewCart} href={"/Cart"}>
               <button className='w-full flex items-center justify-center self-stretch px-5 py-2.5 bg-primary/30 text-white text-[12px] hover:bg-primary/60'>
                 View Cart
               </button>
             </Link>
-            <button className='w-full flex items-center justify-center self-stretch px-5 py-2.5 bg-primary text-white text-[12px]'>
-              Checkout
-            </button>
+            <br />
+            <Link onClick={handleViewCheckout} href={"/Checkout"}>
+              <button className='w-full flex items-center justify-center self-stretch px-5 py-2.5 bg-primary text-white text-[12px]'>
+                Checkout
+              </button>
+            </Link>
           </div>
         </div>
       </aside>

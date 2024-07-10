@@ -8,12 +8,10 @@ import { RecoilRoot } from "recoil";
 
 export default function Home() {
   return (
-    <RecoilRoot>
-      <main className='min-h-screen bg-background scrollbar-none '>
-        <Banner />
+    <main className='min-h-screen bg-background scrollbar-none '>
+      <Banner />
 
-        <Products />
-      </main>
-    </RecoilRoot>
+      <Products />
+    </main>
   );
 }
