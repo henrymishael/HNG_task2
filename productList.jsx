@@ -36,7 +36,7 @@ const productList = {
     {
       id: 1,
       name: "Yindira floral",
-      price: 52000,
+      price: "52,000",
       type: "Maxi fitted",
       image1: first1,
       image2: first2,
@@ -47,7 +47,7 @@ const productList = {
     {
       id: 2,
       name: "Lilly",
-      price: 50000,
+      price: "50,000",
       type: "Mini gown",
       image1: second1,
       image2: second2,
@@ -58,7 +58,7 @@ const productList = {
     {
       id: 3,
       name: "Benny",
-      price: 43000,
+      price: "43,000",
       type: "Pleated corset",
       image1: Third1,
       image2: Third2,
@@ -69,7 +69,7 @@ const productList = {
     {
       id: 4,
       name: "Loadily",
-      price: 49000,
+      price: "49,000",
       type: "Floral maxi",
       image1: fourth1,
       image2: fourth2,
@@ -80,7 +80,7 @@ const productList = {
     {
       id: 5,
       name: "Soft blu",
-      price: 40000,
+      price: "40,000",
       type: "Sky corset",
       image1: fifth1,
       image2: fifth2,
@@ -91,7 +91,7 @@ const productList = {
     {
       id: 6,
       name: "Special One",
-      price: 55000,
+      price: "55,000",
       type: "Maxi special",
       image1: sixth1,
       image2: sixth2,
@@ -102,7 +102,7 @@ const productList = {
     {
       id: 7,
       name: "Lilly",
-      price: 50000,
+      price: "50,000",
       type: "Mini gown",
       image1: seventh1,
       image2: seventh2,
@@ -113,7 +113,7 @@ const productList = {
     {
       id: 8,
       name: "Chommy",
-      price: 58000,
+      price: "58,000",
       type: "Knitted piece",
       image1: eight1,
       image2: eight2,
@@ -124,7 +124,7 @@ const productList = {
     {
       id: 9,
       name: "Tower",
-      price: 44000,
+      price: "44,000",
       type: "Petty straight",
       image1: nine1,
       image2: nine2,
@@ -135,7 +135,7 @@ const productList = {
     {
       id: 10,
       name: "Beach",
-      price: 30000,
+      price: "30,000",
       type: "Floral maxi",
       image1: tenth1,
       image2: tenth2,
@@ -146,7 +146,7 @@ const productList = {
     {
       id: 11,
       name: "Bloomy",
-      price: 60000,
+      price: "60,000",
       type: "Dinner you",
       image1: eleventh1,
       image2: eleventh2,
@@ -157,7 +157,7 @@ const productList = {
     {
       id: 12,
       name: "Princess",
-      price: 30000,
+      price: "30,000",
       type: "Palace maxi",
       image1: twelvth1,
       image2: twelvth2,
@@ -168,7 +168,7 @@ const productList = {
     {
       id: 13,
       name: "Whitey",
-      price: 40000,
+      price: "40,000",
       type: "Yindira wit",
       image1: thirteenth1,
       image2: thirteenth2,
@@ -179,7 +179,7 @@ const productList = {
     {
       id: 14,
       name: "Signature",
-      price: 60000,
+      price: "60,000",
       type: "Flowery shiff",
       image1: fourteenth1,
       image2: fourteenth2,
@@ -190,7 +190,7 @@ const productList = {
     {
       id: 15,
       name: "Reddy",
-      price: 40000,
+      price: "40,000",
       type: "Peppery flo",
       image1: fifteenth1,
       image2: fifteenth2,
@@ -201,7 +201,7 @@ const productList = {
     {
       id: 16,
       name: "Fushion",
-      price: 40000,
+      price: "40,000",
       type: "Knitted Mini",
       image1: sixteenth1,
       image2: sixteenth2,
@@ -212,7 +212,7 @@ const productList = {
     {
       id: 17,
       name: "Reddy",
-      price: 40000,
+      price: "40,000",
       type: "Peppery flo",
       image1: fifteenth1,
       image2: fifteenth2,
@@ -223,7 +223,7 @@ const productList = {
     {
       id: 18,
       name: "Signature",
-      price: 60000,
+      price: "60,000",
       type: "Flowery shiff",
       image1: fourteenth1,
       image2: fourteenth2,
@@ -234,7 +234,7 @@ const productList = {
     {
       id: 19,
       name: "Princess",
-      price: 30000,
+      price: "30,000",
       type: "Palace maxi",
       image1: twelvth1,
       image2: twelvth2,
@@ -245,7 +245,7 @@ const productList = {
     {
       id: 20,
       name: "Chommy",
-      price: 58000,
+      price: "58,000",
       type: "Knitted piece",
       image1: eight1,
       image2: eight2,

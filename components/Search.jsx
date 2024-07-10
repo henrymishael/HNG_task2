@@ -27,7 +27,7 @@ const Search = () => {
       </div> */}
       <button
         onClick={toggleOverlay}
-        className='flex flex-row items-center xsm:text-sm slg:text-lg lg:px-5 lg:py-2.5 xsm:px-1.5 xsm:py-2  bg-primary hover:bg-[#034488] text-white rounded-xl transition-all duration-200 ease-in-out '
+        className='flex flex-row items-center xsm:text-sm slg:text-lg lg:px-3 lg:py-2 xsm:px-1.5 xsm:py-2  bg-primary hover:bg-[#034488] text-white rounded-xl transition-all duration-200 ease-in-out gap-1.5 '
       >
         <p className='text-white'>Sort by</p>
         <ChevronDown className='hidden slg:block' color='white' />

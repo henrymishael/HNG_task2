@@ -64,9 +64,9 @@ const Footer = () => {
               <p className='text-[12px] text-white/90'>
                 Sign up for exclusive offers, original stories, events and more
               </p>
-              <div className='mt-[30px] flex items-center w-32 justify-center text-white border gap-2.5 px-[15px] py-[6.5px] rounded-lg border-white hover:border-accent '>
-                <h3 className='text-white'>Sign Up</h3>
-                <ArrowRight color='white' />
+              <div className='mt-[30px] flex items-center w-32 justify-center text-white border gap-2.5 px-[15px] py-[6.5px] rounded-lg border-white cursor-pointer '>
+                <h3 className='text-white '>Sign Up</h3>
+                <ArrowRight className='' color='white' />
               </div>
             </div>
             <div className='flex gap-[13px] mt-[15px]'>
@@ -83,14 +83,14 @@ const Footer = () => {
           <p>&copy; 2024. yindira. All Rights Reserved</p>
         </div>
       </footer>
-      <footer className='bg-primary flex lg:hidden flex-col  items-start p-8  gap-6 min-h-[100vh]'>
+      <footer className='bg-primary flex lg:hidden flex-col  items-start p-8  gap-6 min-h-[100vh] w-full'>
         <div className='flex flex-col items-start  gap-y-[15px] text-white w-[25%] '>
           <p className='text-[20px] font-semibold'>NEW TO YINDIRA?</p>
           <div>
             <p className='text-[12px] text-white/90'>
               Sign up for exclusive offers, original stories, events and more
             </p>
-            <div className='mt-[30px] flex items-center w-32 justify-center text-white border gap-2.5 px-[15px] py-[6.5px] rounded-lg border-white hover:border-accent '>
+            <div className='mt-[30px] flex items-center w-32 justify-center text-white border gap-2.5 px-[15px] py-[6.5px] rounded-lg border-white '>
               <h3 className='text-white'>Sign Up</h3>
               <ArrowRight color='white' />
             </div>
@@ -111,8 +111,8 @@ const Footer = () => {
             individuality and confidence.&quot;
           </p>
         </div>
-        <div className='flex flex-col gap-y-[15px] text-white'>
-          <div className='flex flex-row'>
+        <div className='flex flex-col gap-12 text-white w-full'>
+          <div className='flex flex-row justify-between w-full'>
             <div className='flex flex-col gap-y-2.5 text-white text-[16px]'>
               <p className='text-[20px] font-semibold'>HELP</p>
               <p>FAQs</p>
@@ -121,7 +121,33 @@ const Footer = () => {
               <p>Return & Exchange</p>
               <p>Contact us</p>
             </div>
+            <div className='flex flex-col gap-y-2.5 text-white text-[16px]'>
+              <p className='text-[20px] font-semibold'>COMPANY</p>
+              <p>About us</p>
+              <p>Careers</p>
+              <p>Our stories</p>
+              <p>Press</p>
+              <p>Blog</p>
+            </div>
           </div>
+          <div className='flex flex-row justify-between w-full'>
+            <div className='flex flex-col gap-y-2.5 text-white text-[16px]'>
+              <p className='text-[20px] font-semibold'>MORE</p>
+              <p>Account</p>
+              <p>Wishlist</p>
+              <p>Track order</p>
+            </div>
+            <div className='flex flex-col gap-y-2.5 text-white text-[16px]'>
+              <p className='text-[20px] font-semibold'>LEGAL</p>
+              <p className=''>Privacy policy</p>
+              <p>Terms of service</p>
+              <p>Refund policy</p>
+            </div>
+          </div>
+        </div>
+        <div className='flex flex-col gap-3 mt-2'>
+          <Image src={visa} alt='' />
+          <p>&copy; 2024. yindira. All Rights Reserved</p>
         </div>
       </footer>
     </>

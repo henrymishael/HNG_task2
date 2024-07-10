@@ -14,7 +14,7 @@ import Link from "next/link";
 import { RecoilRoot, useRecoilState } from "recoil";
 import { cartState } from "../atoms/cartState";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart } from "@/store/slices/cart-slice";
+import { addToCart, removeFromCart } from "@/store/slices/cart-slice";
 import { useRouter } from "next/navigation";
 
 const Header = () => {
@@ -26,6 +26,13 @@ const Header = () => {
   const [quantity, setQuantity] = useState(1);
   const router = useRouter();
 
+  const [buttonText, setButtonText] = useState("Remove from");
+
+  const handleClick = () => {
+    setButtonText((prevText) =>
+      prevText === "Remove from Cart" ? "Removed!" : "Remove from Cart"
+    );
+  };
   const handleViewCart = (e) => {
     e.preventDefault();
     window.location.href = "/Cart";
@@ -45,11 +52,11 @@ const Header = () => {
     }
   };
 
-  useEffect(() => {
-    let price = Math.ceil(cart.reduce((acc, curr) => acc + curr.price, 0));
-    setTotalCart(price);
-    // setTotalCart(cart.reduce((acc, curr) => acc + curr.price, 0));
-  }, [cart]);
+  // useEffect(() => {
+  //   let price = Math.ceil(cart.reduce((acc, curr) => acc + curr.price, 0));
+  //   setTotalCart(price);
+  //   // setTotalCart(cart.reduce((acc, curr) => acc + curr.price, 0));
+  // }, [cart]);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -58,10 +65,13 @@ const Header = () => {
     setCartPopupOpen(!isCartPopupOpen);
   };
 
-  function handleRemoveFromCart() {
-    console.log("removed");
-    dispatch(removeFromCart(cart?.id));
-  }
+  // function handleRemoveFromCart() {
+  //   console.log("removed");
+  //   dispatch(removeFromCart(cart?.id));
+  // }
+
+  // function handleAddToCart() {
+  //   dispatch(addToCart(product));
 
   return (
     <>
@@ -191,11 +201,11 @@ const Header = () => {
                 </p>
               </div>
               <button
-                onClick={() => handleRemoveFromCart()}
+                onClick={() => handleClick()}
                 className='uppercase 
             text-[10px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
               >
-                Remove from cart
+                {buttonText}
               </button>
             </div>
           </div>
@@ -215,12 +225,16 @@ const Header = () => {
             </div>
             <div className='flex flex-col items-left gap-4'>
               <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                <p>-</p>
-                <p className='font-medium'>1</p>
-                <p>+</p>
+                <p className='cursor-pointer' onClick={decrementQuantity}>
+                  -
+                </p>
+                <p className='font-medium'>{quantity}</p>
+                <p className='cursor-pointer' onClick={incrementQuantity}>
+                  +
+                </p>
               </div>
               <button
-                onClick={() => handleRemoveFromCart()}
+                // onClick={() => handleRemoveFromCart()}
                 className='uppercase 
             text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
               >
@@ -241,12 +255,16 @@ const Header = () => {
             </div>
             <div className='flex flex-col items-left gap-4'>
               <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                <p>-</p>
-                <p className='font-medium'>1</p>
-                <p>+</p>
+                <p className='cursor-pointer' onClick={decrementQuantity}>
+                  -
+                </p>
+                <p className='font-medium'>{quantity}</p>
+                <p className='cursor-pointer' onClick={incrementQuantity}>
+                  +
+                </p>
               </div>
               <button
-                onClick={() => handleRemoveFromCart()}
+                // onClick={() => handleRemoveFromCart()}
                 className='uppercase 
             text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
               >
@@ -263,16 +281,20 @@ const Header = () => {
             <div>
               <p className='text-[16px] font-bold '>Crochetelo</p>
               <p className='text-sm text-[#686868]'>Knitted Price</p>
-              <p className='text-lg font-medium'>₦95,000</p>
+              <p className='text-lg font-medium'>₦25,000</p>
             </div>
             <div className='flex flex-col items-left gap-4'>
               <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                <p>-</p>
-                <p className='font-medium'>1</p>
-                <p>+</p>
+                <p className='cursor-pointer' onClick={decrementQuantity}>
+                  -
+                </p>
+                <p className='font-medium'>{quantity}</p>
+                <p className='cursor-pointer' onClick={incrementQuantity}>
+                  +
+                </p>
               </div>
               <button
-                onClick={() => handleRemoveFromCart()}
+                // onClick={() => handleRemoveFromCart()}
                 className='uppercase 
             text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
               >
@@ -287,7 +309,7 @@ const Header = () => {
         <div className=' bg-white px-5 pb-2.5 mt-[15px] w-full space-y-6'>
           <div className='flex justify-between items-center font-semibold'>
             <h2>Sub - Total</h2>
-            <p>₦50,000</p>
+            <p>₦117,000</p>
           </div>
           <div className='space-y-6'>
             <Link onClick={handleViewCart} href={"/Cart"}>

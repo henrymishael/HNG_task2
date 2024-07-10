@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import two from "../../public/images/productImages/cart.svg";
 import three from "../../public/images/productImages/shoe.svg";
 import four from "../../public/images/productImages/four.svg";
+import Link from "next/link";
 
 const CartPage = () => {
   const [totalCart, setTotalCart] = useState(0);
@@ -151,7 +152,13 @@ const CartPage = () => {
             </div>
             <div className='flex items-center pb-4 border-b'>
               <div className='flex p-2 w-[400px] justify-between items-center border rounded-lg'>
-                <p>Coupon Code</p>
+                <input
+                  className='border-none outline-none'
+                  placeholder='Coupon code'
+                  type='text'
+                  name=''
+                  id=''
+                />
                 <button className='bg-primary text-white px-3 py-1 rounded-lg'>
                   Apply
                 </button>
@@ -161,9 +168,11 @@ const CartPage = () => {
               <p>Total:</p>
               <p>{totalCart}</p>
             </div>
-            <button className='bg-primary text-white uppercase px-5 py-2.5 '>
-              Proceed to checkout
-            </button>
+            <Link className='w-full' href={"/Checkout"}>
+              <button className='bg-primary w-full text-white uppercase px-5 py-2.5 '>
+                Proceed to checkout
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -276,7 +285,13 @@ const CartPage = () => {
           </div>
           <div className='flex items-center pb-4 border-b'>
             <div className='flex p-2 w-[400px] justify-between items-center border rounded-lg'>
-              <p>Coupon Code</p>
+              <input
+                className='border-none outline-none'
+                placeholder='Coupon code'
+                type='text'
+                name=''
+                id=''
+              />
               <button className='bg-primary text-white px-3 py-1 rounded-lg'>
                 Apply
               </button>
@@ -286,9 +301,11 @@ const CartPage = () => {
             <p>Total:</p>
             <p>{totalCart}</p>
           </div>
-          <button className='bg-primary text-white uppercase px-5 py-2.5 '>
-            Proceed to checkout
-          </button>
+          <Link href={"/Checkout"}>
+            <button className='bg-primary text-white uppercase px-5 py-2.5 '>
+              Proceed to checkout
+            </button>
+          </Link>
         </div>
       </div>
     </>
