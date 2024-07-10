@@ -40,7 +40,7 @@ body {
   }
 
   .sideText {
-    @apply uppercase text-[29px] font-semibold;
+    @apply uppercase text-[16px] font-semibold;
   }
 
   .animate:hover {

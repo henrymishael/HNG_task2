@@ -83,7 +83,47 @@ const Footer = () => {
           <p>&copy; 2024. yindira. All Rights Reserved</p>
         </div>
       </footer>
-      <footer></footer>
+      <footer className='bg-primary flex lg:hidden flex-col  items-start p-8  gap-6 min-h-[100vh]'>
+        <div className='flex flex-col items-start  gap-y-[15px] text-white w-[25%] '>
+          <p className='text-[20px] font-semibold'>NEW TO YINDIRA?</p>
+          <div>
+            <p className='text-[12px] text-white/90'>
+              Sign up for exclusive offers, original stories, events and more
+            </p>
+            <div className='mt-[30px] flex items-center w-32 justify-center text-white border gap-2.5 px-[15px] py-[6.5px] rounded-lg border-white hover:border-accent '>
+              <h3 className='text-white'>Sign Up</h3>
+              <ArrowRight color='white' />
+            </div>
+          </div>
+          <div className='flex gap-[13px] mt-[15px]'>
+            <Image src={linkedin} alt='' />
+            <Image src={instagram} alt='' />
+            <Image src={youtube} alt='' />
+            <Image src={x} alt='' />
+            <Image src={facebook} alt='' />
+          </div>
+        </div>
+        <div className=' h-48 space-y-2.5'>
+          <Image className='' src={Logo} alt='' />
+          <p className=' leading-6 text-left'>
+            &quot;To empower women through fashion by offering a seamless,
+            stylish, and inspiring online shopping experience that celebrates
+            individuality and confidence.&quot;
+          </p>
+        </div>
+        <div className='flex flex-col gap-y-[15px] text-white'>
+          <div className='flex flex-row'>
+            <div className='flex flex-col gap-y-2.5 text-white text-[16px]'>
+              <p className='text-[20px] font-semibold'>HELP</p>
+              <p>FAQs</p>
+              <p>Size Guide</p>
+              <p>Shipping</p>
+              <p>Return & Exchange</p>
+              <p>Contact us</p>
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   );
 };
