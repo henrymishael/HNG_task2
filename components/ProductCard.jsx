@@ -75,7 +75,7 @@ const ProductCard = ({ product }) => {
         </div>
 
         <button
-          className={`uppercase text-[8px] xl:text-[14px] w-[100px] md:w-[130px] md:px-3 py-2.5 bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out`}
+          className={`uppercase text-[8px] xl:text-[14px] w-[85px] md:w-[100px] lg:w-[130px] md:px-3 py-2.5 bg-primary hover:bg-[#034488] text-white md:rounded-xl rounded-lg transition-all duration-200 ease-in-out`}
           onClick={
             cart.some((item) => item.id === product.id)
               ? handleRemoveFromCart

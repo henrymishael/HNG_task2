@@ -1,17 +1,29 @@
 "use client";
 import { Bookmark } from "lucide-react";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import arrow from "../../public/images/assets/arrowLeft.svg";
 import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
 
 const Checkoutpage = () => {
+  const [totalCart, setTotalCart] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const router = useRouter();
+  const { cart } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   const [button, setButton] = useState({
     text: "Place Order",
     clicked: false,
   });
+
+  const [quantities, setQuantities] = useState(
+    cart.reduce((acc, item) => {
+      acc[item.id] = 1; // Initialize each item quantity to 1
+      return acc;
+    }, {})
+  );
 
   const handleClick = (buttonState, setButtonState) => {
     setButtonState({
@@ -19,6 +31,20 @@ const Checkoutpage = () => {
       text: buttonState.clicked ? `Place Order` : `Placed`,
     });
   };
+
+  const calculateTotalAmount = () => {
+    return cart.reduce((total, item) => {
+      return total + item.price * quantities[item.id];
+    }, 0);
+  };
+
+  const totalAmount = calculateTotalAmount();
+
+  useEffect(() => {
+    let price = Math.ceil(cart.reduce((acc, curr) => acc + curr.price, 0));
+    setTotalCart(price);
+    setTotalCart(cart.reduce((acc, curr) => acc + curr.price, 0));
+  }, [cart]);
   return (
     <>
       <div className='px-6 gap-6 pb-12 hidden xl:block'>
@@ -186,10 +212,20 @@ const Checkoutpage = () => {
                 <p>Product</p>
                 <p>sub-total</p>
               </div>
-              <div className="flex flex-row justify-between items-center py-4 border-t border-b'">
-                <p className='text-[#323232] text-[14px]'>
-                  Lilly mini bodycon x 2
-                </p>
+              {cart.map((cartItem) => (
+                <div
+                  key={cartItem.id}
+                  className="flex flex-row justify-between items-center py-4 border-t border-b'"
+                >
+                  <p className='text-[#323232] text-[14px]'>{cartItem.name}</p>
+                  <p>
+                    <span className='font-extrabold'>₦ </span>
+                    {cartItem.price}
+                  </p>
+                </div>
+              ))}
+              {/* <div className="flex flex-row justify-between items-center py-4 border-t border-b'">
+                <p className='text-[#323232] text-[14px]'></p>
                 <p>
                   <span className='font-extrabold'>₦ </span>100,000
                 </p>
@@ -217,12 +253,13 @@ const Checkoutpage = () => {
                 <p className='flex'>
                   <span className='font-extrabold flex '>₦ </span>25,000
                 </p>
-              </div>
+              </div> */}
 
               <div className='flex flex-row justify-between items-center py-4 border-t border-b font-semibold'>
                 <p>Sub-total</p>
                 <p>
-                  <span className='font-extrabold'>₦</span>167,000
+                  <span className='font-extrabold'>₦</span>
+                  {totalAmount}
                 </p>
               </div>
               <div className='flex flex-row justify-between items-center py-4 border-t border-b '>
@@ -234,12 +271,12 @@ const Checkoutpage = () => {
               <div className='flex flex-row justify-between items-center py-4 border-t border-b'>
                 <p className='font-semibold'>Paystack fees</p>
                 <p>
-                  <span className=' font-extrabold'>₦</span>1200
+                  <span className=' font-extrabold'>₦</span>0
                 </p>
               </div>
               <div className='flex flex-row justify-between items-center py-4 border-t'>
                 <p className='font-semibold'>Total</p>
-                <p className='font-extrabold text-[26px]'>₦168,200</p>
+                <p className='font-extrabold text-[26px]'>₦{totalAmount}</p>
               </div>
               <div className='space-y-2 text-[12px]'>
                 <p className=''>
@@ -433,15 +470,19 @@ const Checkoutpage = () => {
                 <p>Product</p>
                 <p>sub-total</p>
               </div>
-              <div className="flex flex-row justify-between items-center py-4 border-t border-b'">
-                <p className='text-[#323232] text-[14px]'>
-                  Lilly mini bodycon x 2
-                </p>
-                <p>
-                  <span className='font-extrabold'>₦ </span>100,000
-                </p>
-              </div>
-              <div className="flex flex-row justify-between items-center py-4 border-t border-b'">
+              {cart.map((cartItem) => (
+                <div
+                  key={cartItem.id}
+                  className="flex flex-row justify-between items-center py-4 border-t border-b'"
+                >
+                  <p className='text-[#323232] text-[14px]'>{cartItem.name}</p>
+                  <p>
+                    <span className='font-extrabold'>₦ </span>
+                    {cartItem.price}
+                  </p>
+                </div>
+              ))}
+              {/* <div className="flex flex-row justify-between items-center py-4 border-t border-b'">
                 <p className='text-[#323232] text-[14px]'>
                   Sculpter silk shaper x 1
                 </p>
@@ -464,12 +505,13 @@ const Checkoutpage = () => {
                 <p className='flex'>
                   <span className='font-extrabold flex '>₦ </span>25,000
                 </p>
-              </div>
+              </div> */}
 
               <div className='flex flex-row justify-between items-center py-4 border-t border-b font-semibold'>
                 <p>Sub-total</p>
                 <p>
-                  <span className='font-extrabold'>₦</span>167,000
+                  <span className='font-extrabold'>₦</span>
+                  {totalAmount}
                 </p>
               </div>
               <div className='flex flex-row justify-between items-center py-4 border-t border-b '>
@@ -481,12 +523,12 @@ const Checkoutpage = () => {
               <div className='flex flex-row justify-between items-center py-4 border-t border-b'>
                 <p className='font-semibold'>Paystack fees</p>
                 <p>
-                  <span className=' font-extrabold'>₦</span>1200
+                  <span className=' font-extrabold'>₦</span>0
                 </p>
               </div>
               <div className='flex flex-row justify-between items-center py-4 border-t'>
                 <p className='font-semibold'>Total</p>
-                <p className='font-extrabold text-[26px]'>₦168,200</p>
+                <p className='font-extrabold text-[26px]'>₦{totalAmount}</p>
               </div>
               <div className='space-y-2 text-[12px]'>
                 <p className=''>

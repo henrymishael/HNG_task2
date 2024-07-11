@@ -20,6 +20,7 @@ import { useRouter } from "next/navigation";
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isCartPopupOpen, setCartPopupOpen] = useState(false);
+
   const [isSearchOpen, setSearchOpen] = useState(false);
   const [totalCart, setTotalCart] = useState(0);
   const { cart } = useSelector((state) => state);
@@ -50,30 +51,42 @@ const Header = () => {
       text: buttonState.clicked ? `Remove` : `Removed`,
     });
   };
-  const handleViewCart = (e) => {
-    e.preventDefault();
-    window.location.href = "/Cart";
-  };
-  const handleViewCheckout = (e) => {
-    e.preventDefault();
-    window.location.href = "/Checkout";
+  const [quantities, setQuantities] = useState(
+    cart.reduce((acc, item) => {
+      acc[item.id] = 1; // Initialize each item quantity to 1
+      return acc;
+    }, {})
+  );
+
+  const incrementQuantity = (id) => {
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [id]: prevQuantities[id] + 1,
+    }));
   };
 
-  const incrementQuantity = () => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
+  const decrementQuantity = (id) => {
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [id]: prevQuantities[id] > 1 ? prevQuantities[id] - 1 : 1, // Ensure quantity doesn't go below 1
+    }));
   };
 
-  const decrementQuantity = () => {
-    if (quantity > 1) {
-      setQuantity((prevQuantity) => prevQuantity - 1);
-    }
+  const calculateTotalAmount = () => {
+    return cart.reduce((total, item) => {
+      return total + item.price * quantities[item.id];
+    }, 0);
   };
 
-  // useEffect(() => {
-  //   let price = Math.ceil(cart.reduce((acc, curr) => acc + curr.price, 0));
-  //   setTotalCart(price);
-  //   // setTotalCart(cart.reduce((acc, curr) => acc + curr.price, 0));
-  // }, [cart]);
+  const totalAmount = calculateTotalAmount();
+
+  useEffect(() => {
+    let price = Number(
+      Math.ceil(cart.reduce((acc, curr) => acc + curr.price, 0))
+    );
+    setTotalCart(price);
+    // setTotalCart(cart.reduce((acc, curr) => acc + curr.price, 0));
+  }, [cart]);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -86,13 +99,26 @@ const Header = () => {
     setSearchOpen(!isSearchOpen);
   };
 
-  // function handleRemoveFromCart() {
-  //   console.log("removed");
-  //   dispatch(removeFromCart(cart?.id));
-  // }
+  function handleRemoveFromCart() {
+    dispatch(removeFromCart(cart?.id));
+    console.log("removed");
+  }
 
-  // function handleAddToCart() {
-  //   dispatch(addToCart(product));
+  // const removeItemFromCart = (productItem) => {
+  //   const productExist = cart.find((item) => item.id === productItem.id);
+  //   if (productExist.quantity === 1) {
+  //     setCartItem(cart.filter((item) => item.id !== productItem.id));
+  //     alert(`${productItem.name} has been removed from cart`);
+  //   } else {
+  //     setCartItem(
+  //       cartI.map((item) =>
+  //         item.id === productItem.id
+  //           ? { ...productExist, quantity: productExist.quantity - 1 }
+  //           : item
+  //       )
+  //     );
+  //   }
+  // };
 
   return (
     <>
@@ -117,9 +143,13 @@ const Header = () => {
             onClick={toggleCartPopup}
           >
             <ShoppingCartIcon size={20} />
-            <span className='absolute w-3.5 bg-red-500 bottom-3 left-3 text-[10px] flex items-center justify-center font-semibold font-titleFont text-white rounded-full'>
-              4
-            </span>
+            {cart.length >= 1 ? (
+              <span className='absolute w-3.5 bg-red-500 bottom-3 left-3 text-[10px] flex items-center justify-center font-semibold font-titleFont text-white rounded-full'>
+                {cart.length}
+              </span>
+            ) : (
+              []
+            )}
           </div>
         </div>
 
@@ -129,13 +159,13 @@ const Header = () => {
 
           <div className='relative cursor-pointer' onClick={toggleCartPopup}>
             <ShoppingCartIcon />
-            {/* {cart.length >= 1 ? ( */}
-            <span className='absolute w-4 bg-red-500 bottom-3 left-3 text-[12px] flex items-center justify-center font-semibold font-titleFont text-white rounded-full'>
-              4
-            </span>
-            {/* ) : (
+            {cart.length >= 1 ? (
+              <span className='absolute w-4 bg-red-500 bottom-3 left-3 text-[12px] flex items-center justify-center font-semibold font-titleFont text-white rounded-full'>
+                {cart.length}
+              </span>
+            ) : (
               []
-            )} */}
+            )}
           </div>
         </div>
         <div
@@ -204,14 +234,70 @@ const Header = () => {
           isCartPopupOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out `}
       >
-        <div className='flex items-center justify-between p-4 '>
+        <div className='flex items-center justify-between  '>
           <h2 className='uppercase text-xl font-medium'>My Shopping Cart</h2>
           <button onClick={toggleCartPopup} className=''>
             <Image src={cancelPop} alt='Close icon' />
           </button>
         </div>
-        {/* {cart.map((product) => ( */}
-        <div
+        {cart.length >= 1 ? (
+          cart.map((product) => (
+            <div
+              key={product.id}
+              // style={{
+              //   opacity: button1.clicked ? "0.5" : "1",
+              //   transition: "opacity 0.3s ease",
+              // }}
+              className='p-5 rounded-lg dow bg-white flex flex-row w-full items-center gap-[22px]'
+            >
+              <div className='w-[150px] h-[200px]'>
+                <Image src={product.image1} alt='' />
+              </div>
+              <div className='flex flex-col justify-center items-start gap-6'>
+                <div>
+                  <p className='text-[16px] font-bold '>{product.name}</p>
+                  <p className='text-sm text-[#686868]'>{product.type}</p>
+                  <p className='text-lg font-medium'>
+                    ₦{product.price * quantities[product.id]}
+                  </p>
+                </div>
+                <div className='flex flex-col items-left gap-4 -mt-3'>
+                  <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
+                    <p
+                      className='cursor-pointer'
+                      onClick={() => decrementQuantity(product.id)}
+                    >
+                      -
+                    </p>
+                    <p className='font-medium'>{quantities[product.id]}</p>
+                    <p
+                      className='cursor-pointer'
+                      onClick={() => incrementQuantity(product.id)}
+                    >
+                      +
+                    </p>
+                  </div>
+                  <button
+                    // style={{
+                    //   opacity: button1.clicked ? "0.5" : "1",
+                    //   transition: "opacity 0.3s ease",
+                    // }}
+                    // onClick={() => handleClick(button1, setButton1, 1)}
+                    onClick={() => handleRemoveFromCart(product.id)}
+                    className='uppercase 
+            text-[14px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
+                  >
+                    {button1.text}
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className='text-center text-[14px]'>No items in your cart</div>
+        )}
+
+        {/* <div
           style={{
             opacity: button1.clicked ? "0.5" : "1",
             transition: "opacity 0.3s ease",
@@ -371,24 +457,33 @@ const Header = () => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* ))} */}
 
         <div className=' bg-white px-5 pb-2.5 mt-[15px] w-full space-y-6'>
           <div className='flex justify-between items-center font-semibold'>
             <h2>Sub - Total</h2>
-            <p>₦117,000</p>
+            <p>₦{totalAmount}</p>
           </div>
           <div className='space-y-6'>
-            <Link onClick={handleViewCart} href={"/Cart"}>
-              <button className='w-full flex items-center justify-center self-stretch px-5 py-2.5 bg-primary/30 text-white text-[12px] hover:bg-primary/60'>
+            <Link
+              // onClick={handleViewCart}
+              href={"/Cart"}
+            >
+              <button
+                onClick={toggleCartPopup}
+                className='w-full flex items-center justify-center self-stretch px-5 py-2.5 bg-primary/30 text-white text-[12px] hover:bg-primary/60'
+              >
                 View Cart
               </button>
             </Link>
             <br />
-            <Link onClick={handleViewCheckout} href={"/Checkout"}>
-              <button className='w-full flex items-center justify-center self-stretch px-5 py-2.5 bg-primary text-white text-[12px]'>
+            <Link href={"/Checkout"}>
+              <button
+                onClick={toggleCartPopup}
+                className='w-full flex items-center justify-center self-stretch px-5 py-2.5 bg-primary text-white text-[12px]'
+              >
                 Checkout
               </button>
             </Link>

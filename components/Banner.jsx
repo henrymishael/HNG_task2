@@ -15,7 +15,7 @@ const Banner = ({ text, image }) => {
   };
   return (
     <div className='flex flex-row  xsm:min-h-[90vh] xl:h-[100vh]  slg:items-center   slg:pt-0 slg:justify-between bg-herostyle slg:pl-10 overflow-hidden  lg:space-y-0 relative '>
-      <div className='slg:w-[55%] slg:pb-8 w-full flex flex-col  text-left  xsm:space-y-6  slg:space-y-6 xsm:z-10 slg:z-0 xsm:relative  slg:translate-y-0 translate-y-[45%] sm:pt-0 xsm:pt-8 z-20'>
+      <div className='slg:w-[55%] slg:pb-8 w-full flex flex-col  text-left  xsm:space-y-6  slg:space-y-6 xsm:z-10  xl:z-0 xsm:relative  slg:translate-y-0 translate-y-[45%] sm:pt-0 xsm:pt-8 z-20'>
         <p className='lg:text-[4rem] slg:text-[3rem] slg:leading-[3.5rem] xsm:text-4xl font-semibold text-primary lg:leading-[4.5rem] xsm:leading-[2.5rem] pl-2  '>
           The perfect blend of dress are available at our stores.
         </p>
@@ -37,7 +37,7 @@ const Banner = ({ text, image }) => {
         alt=''
       />
       <Image
-        className='top-0 absolute  slg:-right-28 xl:-right-8 xsm:hidden  slg:block  '
+        className='top-0 absolute -z-5  slg:-right-28 xl:-right-8 xsm:hidden  slg:block  '
         src={hero}
         alt=''
       />
