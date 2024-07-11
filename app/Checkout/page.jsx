@@ -495,7 +495,7 @@ const Checkoutpage = () => {
                   purposes decided in our privacy policy.
                 </p>
                 <span className='flex gap-2 items-start  '>
-                  <div className='flex items-center'>
+                  <div className='flex items-center mt-1'>
                     <input className='' type='checkbox' name='' id='' />
                   </div>
                   <p className='text-[#323232]/70 '>

@@ -230,7 +230,7 @@ const Header = () => {
               <p className='text-sm text-[#686868]'>Mini gown</p>
               <p className='text-lg font-medium'>₦50,000</p>
             </div>
-            <div className='flex flex-col items-left gap-4'>
+            <div className='flex flex-col items-left gap-4 -mt-3'>
               <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
                 <p className='cursor-pointer' onClick={decrementQuantity}>
                   -
@@ -247,7 +247,7 @@ const Header = () => {
                 }}
                 onClick={() => handleClick(button1, setButton1, 1)}
                 className='uppercase 
-             xsm:w-[150px] px-1 md:px-5 md:py-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out text-[10px]'
+             xsm:w-[150px] px-1 md:px-5 md:py-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out text-[14px]'
               >
                 {button1.text}
               </button>
@@ -271,7 +271,7 @@ const Header = () => {
               <p className='text-sm text-[#686868]'>Silk shaper</p>
               <p className='text-lg font-medium'>₦22,000</p>
             </div>
-            <div className='flex flex-col items-left gap-4'>
+            <div className='flex flex-col items-left gap-4 -mt-3'>
               <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
                 <p className='cursor-pointer' onClick={decrementQuantity}>
                   -
@@ -288,7 +288,7 @@ const Header = () => {
                 }}
                 onClick={() => handleClick(button2, setButton2, 2)}
                 className='uppercase 
-            text-[10px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
+            text-[14px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
               >
                 {button2.text}
               </button>
@@ -311,7 +311,7 @@ const Header = () => {
               <p className='text-sm text-[#686868]'>Signature pose</p>
               <p className='text-lg font-medium'>₦20,000</p>
             </div>
-            <div className='flex flex-col items-left gap-4'>
+            <div className='flex flex-col items-left gap-4 -mt-3'>
               <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
                 <p className='cursor-pointer' onClick={decrementQuantity}>
                   -
@@ -328,7 +328,7 @@ const Header = () => {
                 }}
                 onClick={() => handleClick(button3, setButton3, 3)}
                 className='uppercase 
-            text-[10px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
+            text-[14px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
               >
                 {button3.text}
               </button>
@@ -351,7 +351,7 @@ const Header = () => {
               <p className='text-sm text-[#686868]'>Knitted Price</p>
               <p className='text-lg font-medium'>₦25,000</p>
             </div>
-            <div className='flex flex-col items-left gap-4'>
+            <div className='flex flex-col items-left gap-4 -mt-3'>
               <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
                 <p className='cursor-pointer' onClick={decrementQuantity}>
                   -
@@ -368,7 +368,7 @@ const Header = () => {
                 }}
                 onClick={() => handleClick(button4, setButton4, 4)}
                 className='uppercase 
-            text-[10px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
+            text-[14px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
               >
                 {button4.text}
               </button>
