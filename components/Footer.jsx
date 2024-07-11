@@ -103,7 +103,7 @@ const Footer = () => {
             <Image src={facebook} alt='' />
           </div>
         </div>
-        <div className=' h-48 space-y-2.5'>
+        <div className='  space-y-2.5'>
           <Image className='' src={Logo} alt='' />
           <p className=' leading-6 text-left'>
             &quot;To empower women through fashion by offering a seamless,

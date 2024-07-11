@@ -26,12 +26,28 @@ const Header = () => {
   const [quantity, setQuantity] = useState(1);
   const router = useRouter();
 
-  const [buttonText, setButtonText] = useState("Remove from");
+  const [button1, setButton1] = useState({
+    text: "Remove from Cart",
+    clicked: false,
+  });
+  const [button2, setButton2] = useState({
+    text: "Remove From Cart",
+    clicked: false,
+  });
+  const [button3, setButton3] = useState({
+    text: "Remove from Cart",
+    clicked: false,
+  });
+  const [button4, setButton4] = useState({
+    text: "Remove from Cart",
+    clicked: false,
+  });
 
-  const handleClick = () => {
-    setButtonText((prevText) =>
-      prevText === "Remove from Cart" ? "Removed!" : "Remove from Cart"
-    );
+  const handleClick = (buttonState, setButtonState, id) => {
+    setButtonState({
+      clicked: !buttonState.clicked,
+      text: buttonState.clicked ? `Remove from Cart` : `Removed`,
+    });
   };
   const handleViewCart = (e) => {
     e.preventDefault();
@@ -178,7 +194,10 @@ const Header = () => {
         </div>
         {/* {cart.map((product) => ( */}
         <div
-          // key={product.id}
+          style={{
+            opacity: button1.clicked ? "0.5" : "1",
+            transition: "opacity 0.3s ease",
+          }}
           className='p-5 rounded-lg dow bg-white flex flex-row w-full items-center gap-[22px]'
         >
           <div className='w-[150px] h-[200px]'>
@@ -201,16 +220,24 @@ const Header = () => {
                 </p>
               </div>
               <button
-                onClick={() => handleClick()}
+                style={{
+                  opacity: button1.clicked ? "0.5" : "1",
+                  transition: "opacity 0.3s ease",
+                }}
+                onClick={() => handleClick(button1, setButton1, 1)}
                 className='uppercase 
             text-[10px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
               >
-                {buttonText}
+                {button1.text}
               </button>
             </div>
           </div>
         </div>
         <div
+          style={{
+            opacity: button2.clicked ? "0.5" : "1",
+            transition: "opacity 0.3s ease",
+          }}
           // key={product.id}
           className='p-5 rounded-lg dow bg-white flex flex-row w-full items-center gap-[22px]'
         >
@@ -234,16 +261,26 @@ const Header = () => {
                 </p>
               </div>
               <button
-                // onClick={() => handleRemoveFromCart()}
+                style={{
+                  opacity: button2.clicked ? "0.5" : "1",
+                  transition: "opacity 0.3s ease",
+                }}
+                onClick={() => handleClick(button2, setButton2, 2)}
                 className='uppercase 
-            text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
+            text-[10px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
               >
-                Remove from cart
+                {button2.text}
               </button>
             </div>
           </div>
         </div>
-        <div className='p-5 rounded-lg dow bg-white flex flex-row w-full items-center gap-[22px]'>
+        <div
+          style={{
+            opacity: button3.clicked ? "0.5" : "1",
+            transition: "opacity 0.3s ease",
+          }}
+          className='p-5 rounded-lg dow bg-white flex flex-row w-full items-center gap-[22px]'
+        >
           <div className='w-[150px] h-[200px]'>
             <Image src={three} alt='' />
           </div>
@@ -264,16 +301,26 @@ const Header = () => {
                 </p>
               </div>
               <button
-                // onClick={() => handleRemoveFromCart()}
+                style={{
+                  opacity: button3.clicked ? "0.5" : "1",
+                  transition: "opacity 0.3s ease",
+                }}
+                onClick={() => handleClick(button3, setButton3, 3)}
                 className='uppercase 
-            text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
+            text-[10px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
               >
-                Remove from cart
+                {button3.text}
               </button>
             </div>
           </div>
         </div>
-        <div className='p-5 rounded-lg dow bg-white flex flex-row w-full items-center gap-[22px]'>
+        <div
+          style={{
+            opacity: button4.clicked ? "0.5" : "1",
+            transition: "opacity 0.3s ease",
+          }}
+          className='p-5 rounded-lg dow bg-white flex flex-row w-full items-center gap-[22px]'
+        >
           <div className='w-[150px] h-[200px]'>
             <Image src={four} alt='' />
           </div>
@@ -294,11 +341,15 @@ const Header = () => {
                 </p>
               </div>
               <button
-                // onClick={() => handleRemoveFromCart()}
+                style={{
+                  opacity: button4.clicked ? "0.5" : "1",
+                  transition: "opacity 0.3s ease",
+                }}
+                onClick={() => handleClick(button4, setButton4, 4)}
                 className='uppercase 
-            text-[10px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
+            text-[10px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
               >
-                Remove from cart
+                {button4.text}
               </button>
             </div>
           </div>

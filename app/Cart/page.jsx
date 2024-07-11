@@ -8,11 +8,38 @@ import two from "../../public/images/productImages/cart.svg";
 import three from "../../public/images/productImages/shoe.svg";
 import four from "../../public/images/productImages/four.svg";
 import Link from "next/link";
+import arrow from "../../public/images/assets/arrowLeft.svg";
+import { useNavigate } from "react-router-dom";
+import { ArrowBigLeftIcon, ArrowLeftIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const CartPage = () => {
   const [totalCart, setTotalCart] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const { cart } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const router = useRouter();
+  const [button, setButton] = useState({
+    text: "Apply",
+    clicked: false,
+  });
+
+  const handleClick = (buttonState, setButtonState) => {
+    setButtonState({
+      clicked: !buttonState.clicked,
+      text: buttonState.clicked ? `Apply` : `Applied`,
+    });
+  };
+
+  const incrementQuantity = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
 
   useEffect(() => {
     let price = Math.ceil(cart.reduce((acc, curr) => acc + curr.price, 0));
@@ -22,6 +49,13 @@ const CartPage = () => {
   return (
     <>
       <div className='bg-[#f1f0f0] md:px-8 px-3 py-10 hidden xl:block '>
+        <Image
+          className='cursor-pointer'
+          onClick={() => router.back()}
+          src={arrow}
+          alt=''
+        />{" "}
+        <p>Back to Home</p>
         <h2 className='text-[32px] font-semibold pb-4'>My Cart</h2>
         <div className='bg-white py-8  px-7 rounded-xl gap-8 flex flex-col'>
           <div className='uppercase md:flex hidden flex-row items-center justify-between text-lg'>
@@ -51,9 +85,13 @@ const CartPage = () => {
             <div className='flex flex-row items-center justify-between w-[52%]'>
               <p>M</p>
               <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                <p>-</p>
-                <p className='font-medium'>2</p>
-                <p>+</p>
+                <p className='cursor-pointer' onClick={decrementQuantity}>
+                  -
+                </p>
+                <p className='font-medium'>{quantity}</p>
+                <p className='cursor-pointer' onClick={incrementQuantity}>
+                  +
+                </p>
               </div>
               <p>50,000</p>
               <p>100,000</p>
@@ -76,9 +114,13 @@ const CartPage = () => {
             <div className='flex flex-row items-center justify-between w-[52%]'>
               <p>M</p>
               <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                <p>-</p>
-                <p className='font-medium'>2</p>
-                <p>+</p>
+                <p className='cursor-pointer' onClick={decrementQuantity}>
+                  -
+                </p>
+                <p className='font-medium'>{quantity}</p>
+                <p className='cursor-pointer' onClick={incrementQuantity}>
+                  +
+                </p>
               </div>
               <p>22,000</p>
               <p>22,000</p>
@@ -101,9 +143,13 @@ const CartPage = () => {
             <div className='flex flex-row items-center justify-between w-[52%]'>
               <p>M</p>
               <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                <p>-</p>
-                <p className='font-medium'>2</p>
-                <p>+</p>
+                <p className='cursor-pointer' onClick={decrementQuantity}>
+                  -
+                </p>
+                <p className='font-medium'>{quantity}</p>
+                <p className='cursor-pointer' onClick={incrementQuantity}>
+                  +
+                </p>
               </div>
               <p>50,000</p>
               <p>100,000</p>
@@ -126,9 +172,13 @@ const CartPage = () => {
             <div className='flex flex-row items-center justify-between w-[52%]'>
               <p>M</p>
               <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                <p>-</p>
-                <p className='font-medium'>2</p>
-                <p>+</p>
+                <p className='cursor-pointer' onClick={decrementQuantity}>
+                  -
+                </p>
+                <p className='font-medium'>{quantity}</p>
+                <p className='cursor-pointer' onClick={incrementQuantity}>
+                  +
+                </p>
               </div>
               <p>50,000</p>
               <p>100,000</p>
@@ -159,8 +209,15 @@ const CartPage = () => {
                   name=''
                   id=''
                 />
-                <button className='bg-primary text-white px-3 py-1 rounded-lg'>
-                  Apply
+                <button
+                  onClick={() => handleClick(button, setButton)}
+                  style={{
+                    opacity: button.clicked ? "0.5" : "1",
+                    transition: "opacity 0.3s ease",
+                  }}
+                  className='bg-primary text-white px-3 py-1 rounded-lg'
+                >
+                  {button.text}
                 </button>
               </div>
             </div>
@@ -177,10 +234,16 @@ const CartPage = () => {
         </div>
       </div>
       <div className='bg-white md:px-8 px-4 py-10 xl:hidden block'>
+        <Image
+          className='cursor-pointer'
+          onClick={() => router.back()}
+          src={arrow}
+          alt=''
+        />{" "}
         <h2 className='text-[32px] font-semibold pb-4'>My Cart</h2>
         <div className=' py-6   rounded-xl gap-8 flex flex-col'>
           <div className='p-3 transition-all duration-200 ease-in-out flex flex-row items-center justify-between'>
-            <div className='flex flex-row  items-center gap-3 justify-between w-full pr-8'>
+            <div className='flex flex-row  items-center gap-3 justify-between w-full md:w-[80%] pr-8'>
               <div className='w-[180px] h-[220px]'>
                 <Image src={one} alt='' />
               </div>
@@ -194,15 +257,19 @@ const CartPage = () => {
                   <p className='text-sm'>M</p>
                 </div>
                 <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px] mt-8 slg:mt-0'>
-                  <p>-</p>
-                  <p className='font-medium'>2</p>
-                  <p>+</p>
+                  <p className='cursor-pointer' onClick={decrementQuantity}>
+                    -
+                  </p>
+                  <p className='font-medium'>{quantity}</p>
+                  <p className='cursor-pointer' onClick={incrementQuantity}>
+                    +
+                  </p>
                 </div>
               </div>
             </div>
           </div>
           <div className='p-3 transition-all duration-200 ease-in-out flex flex-row items-center justify-between'>
-            <div className='flex flex-row items-center gap-3 justify-between w-full pr-8'>
+            <div className='flex flex-row items-center gap-3 justify-between w-full md:w-[80%] pr-8'>
               <div className='w-[180px] h-[220px]'>
                 <Image src={two} alt='' />
               </div>
@@ -216,15 +283,19 @@ const CartPage = () => {
                   <p className='text-sm'>M</p>
                 </div>
                 <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px] slg:mt-0 mt-8'>
-                  <p>-</p>
-                  <p className='font-medium'>1</p>
-                  <p>+</p>
+                  <p className='cursor-pointer' onClick={decrementQuantity}>
+                    -
+                  </p>
+                  <p className='font-medium'>{quantity}</p>
+                  <p className='cursor-pointer' onClick={incrementQuantity}>
+                    +
+                  </p>
                 </div>
               </div>
             </div>
           </div>
           <div className='p-3 transition-all duration-200 ease-in-out flex flex-row items-center justify-between'>
-            <div className='flex flex-row items-center gap-3 justify-between w-full pr-8'>
+            <div className='flex flex-row items-center gap-3 justify-between w-full md:w-[80%] pr-8'>
               <div className='w-[180px] h-[220px]'>
                 <Image src={three} alt='' />
               </div>
@@ -238,15 +309,19 @@ const CartPage = () => {
                   <p className='text-sm'>M</p>
                 </div>
                 <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px] slg:mt-0 mt-8'>
-                  <p>-</p>
-                  <p className='font-medium'>1</p>
-                  <p>+</p>
+                  <p className='cursor-pointer' onClick={decrementQuantity}>
+                    -
+                  </p>
+                  <p className='font-medium'>{quantity}</p>
+                  <p className='cursor-pointer' onClick={incrementQuantity}>
+                    +
+                  </p>
                 </div>
               </div>
             </div>
           </div>
           <div className='p-3 transition-all duration-200 ease-in-out flex flex-row items-center justify-between '>
-            <div className='flex flex-row items-center gap-3 justify-between w-full pr-8'>
+            <div className='flex flex-row items-center gap-3 justify-between w-full md:w-[80%] pr-8'>
               <div className='w-[180px] h-[220px]'>
                 <Image src={four} alt='' />
               </div>
@@ -260,9 +335,13 @@ const CartPage = () => {
                   <p className='text-sm'>M</p>
                 </div>
                 <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px] slg:mt-0 mt-8'>
-                  <p>-</p>
-                  <p className='font-medium'>1</p>
-                  <p>+</p>
+                  <p className='cursor-pointer' onClick={decrementQuantity}>
+                    -
+                  </p>
+                  <p className='font-medium'>{quantity}</p>
+                  <p className='cursor-pointer' onClick={incrementQuantity}>
+                    +
+                  </p>
                 </div>
               </div>
             </div>
@@ -292,8 +371,15 @@ const CartPage = () => {
                 name=''
                 id=''
               />
-              <button className='bg-primary text-white px-3 py-1 rounded-lg'>
-                Apply
+              <button
+                onClick={() => handleClick(button, setButton)}
+                style={{
+                  opacity: button.clicked ? "0.5" : "1",
+                  transition: "opacity 0.3s ease",
+                }}
+                className='bg-primary text-white px-3 py-1 rounded-lg'
+              >
+                {button.text}
               </button>
             </div>
           </div>
@@ -302,7 +388,7 @@ const CartPage = () => {
             <p>{totalCart}</p>
           </div>
           <Link href={"/Checkout"}>
-            <button className='bg-primary text-white uppercase px-5 py-2.5 '>
+            <button className='bg-primary w-full text-white uppercase px-5 py-2.5 '>
               Proceed to checkout
             </button>
           </Link>
