@@ -99,7 +99,7 @@ const Header = () => {
       <header
         className={`flex flex-row xsm:px-5 slg:px-8 py-3 space-x-5 items-center sticky left-0 top-0 z-50 justify-between bg-header `}
       >
-        <div className='slg:hidden slg:p-3 xsm:p-2 rounded-full hover:bg-accent'>
+        <div className='slg:hidden slg:p-3 xsm:p-2 '>
           <RxHamburgerMenu size={28} onClick={toggleSidebar} />
         </div>
         <Link href='/'>
@@ -170,10 +170,7 @@ const Header = () => {
             <div className='flex space-x-4 items-center'>
               <Image src={logo} alt='Logo'></Image>
             </div>
-            <button
-              onClick={toggleSidebar}
-              className='p-3 flex items-center bg-accent rounded-full'
-            >
+            <button onClick={toggleSidebar}>
               <Image src={cancel} alt='Close icon' />
             </button>
           </div>
@@ -247,7 +244,7 @@ const Header = () => {
                 }}
                 onClick={() => handleClick(button1, setButton1, 1)}
                 className='uppercase 
-             xsm:w-[150px] px-1 md:px-5 md:py-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out text-[14px]'
+            text-[14px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
               >
                 {button1.text}
               </button>
