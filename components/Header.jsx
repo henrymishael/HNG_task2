@@ -145,7 +145,7 @@ const Header = () => {
         >
           <SearchIcon color='gray ' className='text-gray-300' />
           <input
-            className=' bg-white border-none outline-none text-sm'
+            className='w-full bg-white border-none outline-none text-sm'
             type='search'
             placeholder='Search...'
           />
