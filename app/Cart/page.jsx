@@ -55,7 +55,6 @@ const CartPage = () => {
           src={arrow}
           alt=''
         />{" "}
-        <p>Back to Home</p>
         <h2 className='text-[32px] font-semibold pb-4'>My Cart</h2>
         <div className='bg-white py-8  px-7 rounded-xl gap-8 flex flex-col'>
           <div className='uppercase md:flex hidden flex-row items-center justify-between text-lg'>

@@ -27,26 +27,26 @@ const Header = () => {
   const router = useRouter();
 
   const [button1, setButton1] = useState({
-    text: "Remove from Cart",
+    text: "Remove",
     clicked: false,
   });
   const [button2, setButton2] = useState({
-    text: "Remove From Cart",
+    text: "Remove",
     clicked: false,
   });
   const [button3, setButton3] = useState({
-    text: "Remove from Cart",
+    text: "Remove",
     clicked: false,
   });
   const [button4, setButton4] = useState({
-    text: "Remove from Cart",
+    text: "Remove",
     clicked: false,
   });
 
   const handleClick = (buttonState, setButtonState, id) => {
     setButtonState({
       clicked: !buttonState.clicked,
-      text: buttonState.clicked ? `Remove from Cart` : `Removed`,
+      text: buttonState.clicked ? `Remove` : `Removed`,
     });
   };
   const handleViewCart = (e) => {
@@ -226,7 +226,7 @@ const Header = () => {
                 }}
                 onClick={() => handleClick(button1, setButton1, 1)}
                 className='uppercase 
-            text-[10px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
+             xsm:w-[150px] px-1 md:px-5 md:py-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out text-[10px]'
               >
                 {button1.text}
               </button>

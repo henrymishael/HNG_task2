@@ -28,7 +28,6 @@ const Checkoutpage = () => {
           src={arrow}
           alt=''
         />{" "}
-        <p>Back</p>
         <h2 className='text-[32px] font-semibold'>Checkout</h2>
         <div className='bg-[#f8f8f8] py-6 px-2 rounded-lg mt-3 space-y-3 '>
           <p>
@@ -248,7 +247,7 @@ const Checkoutpage = () => {
                   your experience throughout this website, and for other
                   purposes decided in our privacy policy.
                 </p>
-                <span className='flex gap-2'>
+                <span className='flex gap-2 items-start'>
                   <input type='checkbox' name='' id='' />
                   <p className='text-[#323232]/70'>
                     I have read and agreed to the website Terms & conditions
@@ -277,7 +276,6 @@ const Checkoutpage = () => {
           src={arrow}
           alt=''
         />{" "}
-        <p>Back</p>
         <h2 className='text-[32px] font-semibold'>Checkout</h2>
         <div className='bg-[#f8f8f8] py-6 px-2 rounded-lg mt-3 space-y-3 '>
           <p>
@@ -429,7 +427,7 @@ const Checkoutpage = () => {
                 </div>
               </div>
             </form>
-            <div className='bg-[#f4f4f4] mt-8 flex flex-col rounded-[20px] w-full min-h-screen px-7 py-10 '>
+            <div className='bg-[#f4f4f4] mt-8 flex flex-col rounded-[20px] w-full min-h-screen px-4 py-10 '>
               <h2 className='text-lg font-bold text-left'>YOUR ORDER</h2>
               <div className='pt-2.5 flex flex-row justify-between items-center py-4 border-t border-b'>
                 <p>Product</p>
@@ -496,9 +494,9 @@ const Checkoutpage = () => {
                   your experience throughout this website, and for other
                   purposes decided in our privacy policy.
                 </p>
-                <span className='flex gap-2'>
-                  <input type='checkbox' name='' id='' />
-                  <p className='text-[#323232]/70'>
+                <span className='flex gap-2  '>
+                  <input className='-mt-3' type='checkbox' name='' id='' />
+                  <p className='text-[#323232]/70 '>
                     I have read and agreed to the website Terms & conditions
                   </p>
                 </span>
