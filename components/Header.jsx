@@ -20,6 +20,7 @@ import { useRouter } from "next/navigation";
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isCartPopupOpen, setCartPopupOpen] = useState(false);
+  const [isSearchOpen, setSearchOpen] = useState(false);
   const [totalCart, setTotalCart] = useState(0);
   const { cart } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -81,6 +82,10 @@ const Header = () => {
     setCartPopupOpen(!isCartPopupOpen);
   };
 
+  const toggleSearchBar = () => {
+    setSearchOpen(!isSearchOpen);
+  };
+
   // function handleRemoveFromCart() {
   //   console.log("removed");
   //   dispatch(removeFromCart(cart?.id));
@@ -104,7 +109,7 @@ const Header = () => {
         </Link>
 
         <div className='flex slg:hidden   lg:space-x-4 xsm:space-x-3 slg:pl-0 md:pl-0'>
-          <SearchIcon size={20} className='' />
+          <SearchIcon onClick={toggleSearchBar} size={20} className='' />
           <UserCircle size={20} />
           <Link href={"/"}></Link>
           <div
@@ -117,8 +122,9 @@ const Header = () => {
             </span>
           </div>
         </div>
+
         <div className='slg:flex hidden space-x-4 slg:pl-0 md:pl-0'>
-          <SearchIcon className='cursor-pointer' />
+          <SearchIcon onClick={toggleSearchBar} className='cursor-pointer' />
           <UserCircle className='cursor-pointer' />
 
           <div className='relative cursor-pointer' onClick={toggleCartPopup}>
@@ -132,13 +138,27 @@ const Header = () => {
             )} */}
           </div>
         </div>
+        <div
+          className={` ${
+            isSearchOpen ? "block" : "hidden"
+          } fixed lg:w-[317px] xsm:w-[220px] z-[999px]  top-20 right-6 flex flex-row items-center gap-3 py-3 lg:px-6 xsm:px-2 bg-white border-none outline-none rounded-[100px]`}
+        >
+          <SearchIcon color='gray ' className='text-gray-300' />
+          <input
+            className=' bg-white border-none outline-none text-sm'
+            type='search'
+            placeholder='Search...'
+          />
+        </div>
       </header>
+
       <div
         className={`fixed inset-0 bg-black bg-opacity-50 z-40 ${
           isSidebarOpen ? "block" : "hidden"
         }`}
         onClick={toggleSidebar}
       ></div>
+
       <aside
         className={`slg:hidden overflow-hidden flex flex-row fixed top-0 right-0 h-full w-full bg-white z-50 transform scrollbar-none ${
           isSidebarOpen ? "translate-x-0" : "translate-x-full"
@@ -181,6 +201,7 @@ const Header = () => {
           </nav>
         </div>
       </aside>
+
       <aside
         className={`fixed flex flex-col top-[72px] h-screen gap-8  right-0 px-6 pt-4 pb-24  xl:w-[420px] bg-[#FCFCFC] z-50 transform overflow-y-scroll scrollbar-none ${
           isCartPopupOpen ? "translate-x-0" : "translate-x-full"

@@ -427,7 +427,7 @@ const Checkoutpage = () => {
                 </div>
               </div>
             </form>
-            <div className='bg-[#f4f4f4] mt-8 flex flex-col rounded-[20px] w-full min-h-screen px-4 py-10 '>
+            <div className='bg-[#f4f4f4] mt-8 flex flex-col rounded-[20px] w-full  slg:max-h-screen   px-4 py-10 '>
               <h2 className='text-lg font-bold text-left'>YOUR ORDER</h2>
               <div className='pt-2.5 flex flex-row justify-between items-center py-4 border-t border-b'>
                 <p>Product</p>
@@ -494,8 +494,10 @@ const Checkoutpage = () => {
                   your experience throughout this website, and for other
                   purposes decided in our privacy policy.
                 </p>
-                <span className='flex gap-2  '>
-                  <input className='-mt-3' type='checkbox' name='' id='' />
+                <span className='flex gap-2 items-start  '>
+                  <div className='flex items-center'>
+                    <input className='' type='checkbox' name='' id='' />
+                  </div>
                   <p className='text-[#323232]/70 '>
                     I have read and agreed to the website Terms & conditions
                   </p>
