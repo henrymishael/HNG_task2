@@ -224,36 +224,7 @@ const Checkoutpage = () => {
                   </p>
                 </div>
               ))}
-              {/* <div className="flex flex-row justify-between items-center py-4 border-t border-b'">
-                <p className='text-[#323232] text-[14px]'></p>
-                <p>
-                  <span className='font-extrabold'>₦ </span>100,000
-                </p>
-              </div>
-              <div className="flex flex-row justify-between items-center py-4 border-t border-b'">
-                <p className='text-[#323232] text-[14px]'>
-                  Sculpter silk shaper x 1
-                </p>
-                <p>
-                  <span className='font-extrabold'>₦ </span>22,000
-                </p>
-              </div>
-              <div className="flex flex-row justify-between items-center py-4 border-t border-b'">
-                <p className='text-[#323232] text-[14px]'>
-                  Candy signature pose x 1
-                </p>
-                <p>
-                  <span className='font-extrabold'>₦ </span>22,000
-                </p>
-              </div>
-              <div className='flex flex-row justify-between items-center py-4 border-t border-b '>
-                <p className='text-[#323232] text-[14px]'>
-                  Crochetelo knitted piece x 1
-                </p>
-                <p className='flex'>
-                  <span className='font-extrabold flex '>₦ </span>25,000
-                </p>
-              </div> */}
+             
 
               <div className='flex flex-row justify-between items-center py-4 border-t border-b font-semibold'>
                 <p>Sub-total</p>

@@ -32,18 +32,6 @@ const Header = () => {
     text: "Remove",
     clicked: false,
   });
-  const [button2, setButton2] = useState({
-    text: "Remove",
-    clicked: false,
-  });
-  const [button3, setButton3] = useState({
-    text: "Remove",
-    clicked: false,
-  });
-  const [button4, setButton4] = useState({
-    text: "Remove",
-    clicked: false,
-  });
 
   const handleClick = (buttonState, setButtonState, id) => {
     setButtonState({
@@ -58,19 +46,19 @@ const Header = () => {
     }, {})
   );
 
-  const incrementQuantity = (id) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [id]: prevQuantities[id] + 1,
-    }));
-  };
+  // const incrementQuantity = (id) => {
+  //   setQuantities((prevQuantities) => ({
+  //     ...prevQuantities,
+  //     [id]: prevQuantities[id] + 1,
+  //   }));
+  // };
 
-  const decrementQuantity = (id) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [id]: prevQuantities[id] > 1 ? prevQuantities[id] - 1 : 1, // Ensure quantity doesn't go below 1
-    }));
-  };
+  // const decrementQuantity = (id) => {
+  //   setQuantities((prevQuantities) => ({
+  //     ...prevQuantities,
+  //     [id]: prevQuantities[id] > 1 ? prevQuantities[id] - 1 : 1, // Ensure quantity doesn't go below 1
+  //   }));
+  // };
 
   const calculateTotalAmount = () => {
     return cart.reduce((total, item) => {
@@ -104,22 +92,6 @@ const Header = () => {
     console.log("removed");
   }
 
-  // const removeItemFromCart = (productItem) => {
-  //   const productExist = cart.find((item) => item.id === productItem.id);
-  //   if (productExist.quantity === 1) {
-  //     setCartItem(cart.filter((item) => item.id !== productItem.id));
-  //     alert(`${productItem.name} has been removed from cart`);
-  //   } else {
-  //     setCartItem(
-  //       cartI.map((item) =>
-  //         item.id === productItem.id
-  //           ? { ...productExist, quantity: productExist.quantity - 1 }
-  //           : item
-  //       )
-  //     );
-  //   }
-  // };
-
   return (
     <>
       <header
@@ -135,11 +107,15 @@ const Header = () => {
         </Link>
 
         <div className='flex slg:hidden   lg:space-x-4 xsm:space-x-3 slg:pl-0 md:pl-0'>
-          <SearchIcon onClick={toggleSearchBar} size={20} className='' />
+          <SearchIcon
+            onClick={toggleSearchBar}
+            size={20}
+            className='cursor-pointer'
+          />
           <UserCircle size={20} />
           <Link href={"/"}></Link>
           <div
-            className='relative bg-white -left-2.5'
+            className='relative cursor-pointer bg-white -left-2.5'
             onClick={toggleCartPopup}
           >
             <ShoppingCartIcon size={20} />
@@ -241,9 +217,9 @@ const Header = () => {
           </button>
         </div>
         {cart.length >= 1 ? (
-          cart.map((product) => (
+          cart.map((cartItem) => (
             <div
-              key={product.id}
+              key={cartItem.id}
               // style={{
               //   opacity: button1.clicked ? "0.5" : "1",
               //   transition: "opacity 0.3s ease",
@@ -251,39 +227,32 @@ const Header = () => {
               className='p-5 rounded-lg dow bg-white flex flex-row w-full items-center gap-[22px]'
             >
               <div className='w-[150px] h-[200px]'>
-                <Image src={product.image1} alt='' />
+                <Image src={cartItem.image1} alt='' />
               </div>
-              <div className='flex flex-col justify-center items-start gap-6'>
+              <div className='flex flex-col justify-center itemsstart gap-6'>
                 <div>
-                  <p className='text-[16px] font-bold '>{product.name}</p>
-                  <p className='text-sm text-[#686868]'>{product.type}</p>
-                  <p className='text-lg font-medium'>
-                    ₦{product.price * quantities[product.id]}
-                  </p>
+                  <p className='text-[16px] font-bold '>{cartItem.name}</p>
+                  <p className='text-sm text-[#686868]'>{cartItem.type}</p>
+                  <p className='text-lg font-medium'>{cartItem.price}</p>
                 </div>
                 <div className='flex flex-col items-left gap-4 -mt-3'>
                   <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
                     <p
                       className='cursor-pointer'
-                      onClick={() => decrementQuantity(product.id)}
+                      // onClick={() => decrementQuantity(cartItem.id)}
                     >
                       -
                     </p>
-                    <p className='font-medium'>{quantities[product.id]}</p>
+                    <p className='font-medium'>{quantity}</p>
                     <p
                       className='cursor-pointer'
-                      onClick={() => incrementQuantity(product.id)}
+                      // onClick={() => incrementQuantity(cartItem.id)}
                     >
                       +
                     </p>
                   </div>
                   <button
-                    // style={{
-                    //   opacity: button1.clicked ? "0.5" : "1",
-                    //   transition: "opacity 0.3s ease",
-                    // }}
-                    // onClick={() => handleClick(button1, setButton1, 1)}
-                    onClick={() => handleRemoveFromCart(product.id)}
+                    // onClick={() => handleRemoveFromCart(product.id)}
                     className='uppercase 
             text-[14px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
                   >
@@ -297,174 +266,10 @@ const Header = () => {
           <div className='text-center text-[14px]'>No items in your cart</div>
         )}
 
-        {/* <div
-          style={{
-            opacity: button1.clicked ? "0.5" : "1",
-            transition: "opacity 0.3s ease",
-          }}
-          className='p-5 rounded-lg dow bg-white flex flex-row w-full items-center gap-[22px]'
-        >
-          <div className='w-[150px] h-[200px]'>
-            <Image src={one} alt='' />
-          </div>
-          <div className='flex flex-col justify-center items-start gap-6'>
-            <div>
-              <p className='text-[16px] font-bold '>Lilly</p>
-              <p className='text-sm text-[#686868]'>Mini gown</p>
-              <p className='text-lg font-medium'>₦50,000</p>
-            </div>
-            <div className='flex flex-col items-left gap-4 -mt-3'>
-              <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                <p className='cursor-pointer' onClick={decrementQuantity}>
-                  -
-                </p>
-                <p className='font-medium'>{quantity}</p>
-                <p className='cursor-pointer' onClick={incrementQuantity}>
-                  +
-                </p>
-              </div>
-              <button
-                style={{
-                  opacity: button1.clicked ? "0.5" : "1",
-                  transition: "opacity 0.3s ease",
-                }}
-                onClick={() => handleClick(button1, setButton1, 1)}
-                className='uppercase 
-            text-[14px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
-              >
-                {button1.text}
-              </button>
-            </div>
-          </div>
-        </div>
-        <div
-          style={{
-            opacity: button2.clicked ? "0.5" : "1",
-            transition: "opacity 0.3s ease",
-          }}
-          // key={product.id}
-          className='p-5 rounded-lg dow bg-white flex flex-row w-full items-center gap-[22px]'
-        >
-          <div className='w-[150px] h-[200px]'>
-            <Image src={two} alt='' />
-          </div>
-          <div className='flex flex-col justify-center items-start gap-6'>
-            <div>
-              <p className='text-[16px] font-bold '>Sculpter</p>
-              <p className='text-sm text-[#686868]'>Silk shaper</p>
-              <p className='text-lg font-medium'>₦22,000</p>
-            </div>
-            <div className='flex flex-col items-left gap-4 -mt-3'>
-              <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                <p className='cursor-pointer' onClick={decrementQuantity}>
-                  -
-                </p>
-                <p className='font-medium'>{quantity}</p>
-                <p className='cursor-pointer' onClick={incrementQuantity}>
-                  +
-                </p>
-              </div>
-              <button
-                style={{
-                  opacity: button2.clicked ? "0.5" : "1",
-                  transition: "opacity 0.3s ease",
-                }}
-                onClick={() => handleClick(button2, setButton2, 2)}
-                className='uppercase 
-            text-[14px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
-              >
-                {button2.text}
-              </button>
-            </div>
-          </div>
-        </div>
-        <div
-          style={{
-            opacity: button3.clicked ? "0.5" : "1",
-            transition: "opacity 0.3s ease",
-          }}
-          className='p-5 rounded-lg dow bg-white flex flex-row w-full items-center gap-[22px]'
-        >
-          <div className='w-[150px] h-[200px]'>
-            <Image src={three} alt='' />
-          </div>
-          <div className='flex flex-col justify-center items-start gap-6'>
-            <div>
-              <p className='text-[16px] font-bold '>Candy</p>
-              <p className='text-sm text-[#686868]'>Signature pose</p>
-              <p className='text-lg font-medium'>₦20,000</p>
-            </div>
-            <div className='flex flex-col items-left gap-4 -mt-3'>
-              <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                <p className='cursor-pointer' onClick={decrementQuantity}>
-                  -
-                </p>
-                <p className='font-medium'>{quantity}</p>
-                <p className='cursor-pointer' onClick={incrementQuantity}>
-                  +
-                </p>
-              </div>
-              <button
-                style={{
-                  opacity: button3.clicked ? "0.5" : "1",
-                  transition: "opacity 0.3s ease",
-                }}
-                onClick={() => handleClick(button3, setButton3, 3)}
-                className='uppercase 
-            text-[14px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
-              >
-                {button3.text}
-              </button>
-            </div>
-          </div>
-        </div>
-        <div
-          style={{
-            opacity: button4.clicked ? "0.5" : "1",
-            transition: "opacity 0.3s ease",
-          }}
-          className='p-5 rounded-lg dow bg-white flex flex-row w-full items-center gap-[22px]'
-        >
-          <div className='w-[150px] h-[200px]'>
-            <Image src={four} alt='' />
-          </div>
-          <div className='flex flex-col justify-center items-start gap-6'>
-            <div>
-              <p className='text-[16px] font-bold '>Crochetelo</p>
-              <p className='text-sm text-[#686868]'>Knitted Price</p>
-              <p className='text-lg font-medium'>₦25,000</p>
-            </div>
-            <div className='flex flex-col items-left gap-4 -mt-3'>
-              <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                <p className='cursor-pointer' onClick={decrementQuantity}>
-                  -
-                </p>
-                <p className='font-medium'>{quantity}</p>
-                <p className='cursor-pointer' onClick={incrementQuantity}>
-                  +
-                </p>
-              </div>
-              <button
-                style={{
-                  opacity: button4.clicked ? "0.5" : "1",
-                  transition: "opacity 0.3s ease",
-                }}
-                onClick={() => handleClick(button4, setButton4, 4)}
-                className='uppercase 
-            text-[14px] xsm:w-[150px]  md:px-5 md:py-2.5 p-2.5 gap-2.5  bg-primary hover:bg-[#034488] text-white xl:rounded-xl rounded-lg transition-all duration-200 ease-in-out'
-              >
-                {button4.text}
-              </button>
-            </div>
-          </div>
-        </div> */}
-
-        {/* ))} */}
-
         <div className=' bg-white px-5 pb-2.5 mt-[15px] w-full space-y-6'>
           <div className='flex justify-between items-center font-semibold'>
             <h2>Sub - Total</h2>
-            <p>₦{totalAmount}</p>
+            <p>₦{totalCart}</p>
           </div>
           <div className='space-y-6'>
             <Link

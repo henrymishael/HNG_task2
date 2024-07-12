@@ -56,7 +56,7 @@ const ProductCard = ({ product }) => {
           </p>
           <p className='font-medium text-xs text-[#686868]'>{product.type}</p>
           <p className='font-semibold text-[15px] md:text-lg'>
-            ₦{product.price}
+            ₦{product.price.toLocaleString("en-US")}
           </p>
         </div>
         <div className=''>

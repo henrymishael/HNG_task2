@@ -150,128 +150,11 @@ const CartPage = () => {
             )}
           </div>
 
-          {/* <div className='p-6 dow transition-all duration-200 ease-in-out flex flex-row items-center justify-between'>
-            <div className='flex flex-row items-center gap-6'>
-              <div className='w-[180px] h-[220px]'>
-                <Image src={one} alt='' />
-              </div>
-              <div className=''>
-                <p className='text-[30px] font-bold '>Lilly</p>
-                <p className='text-[28px] '>Mini bodycon</p>
-                <div className='flex items-center gap-2 mt-10'>
-                  <div className='bg-red-900 w-[22px] h-[22px] rounded-full'></div>
-                  <p>Wine</p>
-                </div>
-              </div>
-            </div>
-            <div className='flex flex-row items-center justify-between w-[52%]'>
-              <p>M</p>
-              <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                <p className='cursor-pointer' onClick={decrementQuantity}>
-                  -
-                </p>
-                <p className='font-medium'>{quantity}</p>
-                <p className='cursor-pointer' onClick={incrementQuantity}>
-                  +
-                </p>
-              </div>
-              <p>50,000</p>
-              <p>100,000</p>
-            </div>
-          </div>
-          <div className='p-6 dow transition-all duration-200 ease-in-out flex flex-row items-center justify-between'>
-            <div className='flex flex-row items-center gap-6'>
-              <div className='w-[180px] h-[220px]'>
-                <Image src={two} alt='' />
-              </div>
-              <div className=''>
-                <p className='text-[30px] font-bold '>Sculpter</p>
-                <p className='text-[28px] '>Silk shaper</p>
-                <div className='flex items-center gap-2 mt-10'>
-                  <div className='bg-black w-[22px] h-[22px] rounded-full'></div>
-                  <p>Black</p>
-                </div>
-              </div>
-            </div>
-            <div className='flex flex-row items-center justify-between w-[52%]'>
-              <p>M</p>
-              <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                <p className='cursor-pointer' onClick={decrementQuantity}>
-                  -
-                </p>
-                <p className='font-medium'>{quantity}</p>
-                <p className='cursor-pointer' onClick={incrementQuantity}>
-                  +
-                </p>
-              </div>
-              <p>22,000</p>
-              <p>22,000</p>
-            </div>
-          </div>
-          <div className='p-6 dow transition-all duration-200 ease-in-out flex flex-row items-center justify-between'>
-            <div className='flex flex-row items-center gap-6'>
-              <div className='w-[180px] h-[220px]'>
-                <Image src={three} alt='' />
-              </div>
-              <div className=''>
-                <p className='text-[30px] font-bold '>Candy</p>
-                <p className='text-[28px] '>Signature pose</p>
-                <div className='flex items-center gap-2 mt-10'>
-                  <div className=' bg-pink-300 w-[22px] h-[22px] rounded-full'></div>
-                  <p>Pink</p>
-                </div>
-              </div>
-            </div>
-            <div className='flex flex-row items-center justify-between w-[52%]'>
-              <p>M</p>
-              <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                <p className='cursor-pointer' onClick={decrementQuantity}>
-                  -
-                </p>
-                <p className='font-medium'>{quantity}</p>
-                <p className='cursor-pointer' onClick={incrementQuantity}>
-                  +
-                </p>
-              </div>
-              <p>50,000</p>
-              <p>100,000</p>
-            </div>
-          </div>
-          <div className='p-6 dow transition-all duration-200 ease-in-out flex flex-row items-center justify-between'>
-            <div className='flex flex-row items-center gap-6'>
-              <div className='w-[180px] h-[220px]'>
-                <Image src={four} alt='' />
-              </div>
-              <div className=''>
-                <p className='text-[30px] font-bold '>Crochetelo</p>
-                <p className='text-[28px] '>Knotted piece</p>
-                <div className='flex items-center gap-2 mt-10'>
-                  <div className='bg-[#d2ccc2] w-[22px] h-[22px] rounded-full'></div>
-                  <p>Wine</p>
-                </div>
-              </div>
-            </div>
-            <div className='flex flex-row items-center justify-between w-[52%]'>
-              <p>M</p>
-              <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px]'>
-                <p className='cursor-pointer' onClick={decrementQuantity}>
-                  -
-                </p>
-                <p className='font-medium'>{quantity}</p>
-                <p className='cursor-pointer' onClick={incrementQuantity}>
-                  +
-                </p>
-              </div>
-              <p>50,000</p>
-              <p>100,000</p>
-            </div>
-          </div> */}
-
           <div className='flex flex-col  gap-4 '>
             <p className='text-xl'>CART TOTAL</p>
             <div className='flex items-center justify-between py-2 border-b'>
               <p>sub-total</p>
-              <p>{totalAmount}</p>
+              <p>₦{totalAmount}</p>
             </div>
             <div className='flex items-center justify-between py-3 border-b'>
               <p>Shipping</p>
@@ -305,7 +188,7 @@ const CartPage = () => {
             </div>
             <div className='flex items-center justify-between'>
               <p>Total:</p>
-              <p>{totalAmount}</p>
+              <p className='font-bold text-[24px]'>₦ {totalAmount}</p>
             </div>
             <Link className='w-full' href={"/Checkout"}>
               <button className='bg-primary w-full text-white uppercase px-5 py-2.5 '>
@@ -363,90 +246,12 @@ const CartPage = () => {
               </div>
             </div>
           ))}
-          {/* <div className='p-3 transition-all duration-200 ease-in-out flex flex-row items-center justify-between'>
-            <div className='flex flex-row items-center gap-3 justify-between w-full md:w-[80%] pr-8'>
-              <div className='w-[180px] h-[220px]'>
-                <Image src={two} alt='' />
-              </div>
-              <div className='flex flex-col slg:flex-row slg:items-center justify-between slg:w-[70%]'>
-                <p className='text-[16px] font-bold '>Sculpter</p>
-                <p className='text-[14px] '>Silk shaper</p>
-                <p className='text-sm slg:mt-0 mt-4 font-semibold'>₦22,000</p>
-                <div className='flex items-center gap-2 slg:mt-0 mt-10'>
-                  <div className='bg-black w-[22px] h-[22px] rounded-full'></div>
-                  <p className='text-[14px]'>Black</p>
-                  <p className='text-sm'>M</p>
-                </div>
-                <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px] slg:mt-0 mt-8'>
-                  <p className='cursor-pointer' onClick={decrementQuantity}>
-                    -
-                  </p>
-                  <p className='font-medium'>{quantity}</p>
-                  <p className='cursor-pointer' onClick={incrementQuantity}>
-                    +
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className='p-3 transition-all duration-200 ease-in-out flex flex-row items-center justify-between'>
-            <div className='flex flex-row items-center gap-3 justify-between w-full md:w-[80%] pr-8'>
-              <div className='w-[180px] h-[220px]'>
-                <Image src={three} alt='' />
-              </div>
-              <div className='flex flex-col slg:flex-row slg:items-center justify-between slg:w-[70%]'>
-                <p className='text-[16px] font-bold '>Candy</p>
-                <p className='text-[14px] '>Signature pose</p>
-                <p className='text-sm slg:mt-0 mt-4 font-semibold'>₦20,000</p>
-                <div className='flex items-center gap-2 slg:mt-0 mt-10'>
-                  <div className='bg-pink-300 w-[22px] h-[22px] rounded-full'></div>
-                  <p className='text-[14px]'>Pink</p>
-                  <p className='text-sm'>M</p>
-                </div>
-                <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px] slg:mt-0 mt-8'>
-                  <p className='cursor-pointer' onClick={decrementQuantity}>
-                    -
-                  </p>
-                  <p className='font-medium'>{quantity}</p>
-                  <p className='cursor-pointer' onClick={incrementQuantity}>
-                    +
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className='p-3 transition-all duration-200 ease-in-out flex flex-row items-center justify-between '>
-            <div className='flex flex-row items-center gap-3 justify-between w-full md:w-[80%] pr-8'>
-              <div className='w-[180px] h-[220px]'>
-                <Image src={four} alt='' />
-              </div>
-              <div className='flex flex-col slg:flex-row slg:items-center justify-between slg:w-[70%]'>
-                <p className='text-[16px] font-bold '>Crochetelo</p>
-                <p className='text-[14px] '>Knitted piece</p>
-                <p className='text-sm slg:mt-0 mt-4 font-semibold'>₦25,000</p>
-                <div className='flex items-center gap-2 slg:mt-0 mt-10'>
-                  <div className='bg-[#d2ccc2] w-[22px] h-[22px] rounded-full'></div>
-                  <p className='text-[14px]'>Cream</p>
-                  <p className='text-sm'>M</p>
-                </div>
-                <div className='flex flex-row items-center px-2.5 gap-4 bg-[#f4f4f4] w-20 rounded-[4px] slg:mt-0 mt-8'>
-                  <p className='cursor-pointer' onClick={decrementQuantity}>
-                    -
-                  </p>
-                  <p className='font-medium'>{quantity}</p>
-                  <p className='cursor-pointer' onClick={incrementQuantity}>
-                    +
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div> */}
         </div>
         <div className='flex flex-col  gap-4 '>
           <p className='text-xl'>CART TOTAL</p>
           <div className='flex items-center justify-between py-2 border-b'>
             <p>sub-total</p>
-            <p>{totalAmount}</p>
+            <p>₦{totalAmount}</p>
           </div>
           <div className='flex items-center justify-between py-3 border-b'>
             <p>Shipping</p>
@@ -480,7 +285,7 @@ const CartPage = () => {
           </div>
           <div className='flex items-center justify-between'>
             <p>Total:</p>
-            <p>{totalAmount}</p>
+            <p className='text-bold'>₦{totalAmount}</p>
           </div>
           <Link href={"/Checkout"}>
             <button className='bg-primary w-full text-white uppercase px-5 py-2.5 '>
